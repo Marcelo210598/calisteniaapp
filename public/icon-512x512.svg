@@ -1,0 +1,7 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="512" height="512" rx="40" fill="#080357"/>
+  <text x="256" y="320" font-family="Arial Black, sans-serif" font-size="80" font-weight="900" text-anchor="middle" fill="#FF9F1C">CaliForce</text>
+  <path d="M256 100 L236 140 L276 140 Z" fill="#D6FFB7"/>
+  <path d="M256 140 L236 180 L276 180 Z" fill="#F5FF90"/>
+  <path d="M256 180 L236 220 L276 220 Z" fill="#FFC15E"/>
+</svg>
