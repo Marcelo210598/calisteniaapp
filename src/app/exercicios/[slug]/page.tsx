@@ -114,7 +114,7 @@ export default async function ExercisePage({ params }: ExercisePageProps) {
               // Mapeamento de exercícios para seus padrões de arquivo (após correções)
               if (exerciseName.includes('burpees')) {
                 imagePath = num === 1 ? '/exercicios/burpees/burpees.png' : `/exercicios/burpees/burpees ${num}.png`;
-              } else if (exerciseName.includes('flexão') || exerciseName.includes('flexoes')) {
+              } else if (exerciseName.includes('flexão') || exerciseName.includes('flexoes') || exerciseName.includes('flexões')) {
                 // Novas imagens PNG sem espaço
                 imagePath = `/exercicios/flexoes-de-braco/flexoes${num === 1 ? '' : num}.png`;
               } else if (exerciseName.includes('barra fixa') || baseSlug === 'barra-fixa') {
