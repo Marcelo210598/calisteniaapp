@@ -11,54 +11,70 @@ export default function HomePage() {
   const featuredExercises = exercises.slice(0, 6);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#D6FFB7] via-[#F5FF90] to-[#FFC15E] dark:from-[#080357] dark:via-[#1e293b] dark:to-[#334155]">
-      <Header />
+    <div className="min-h-screen relative">
+      {/* Background SVG */}
+      <div 
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: 'url(/background-hero.svg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          backgroundAttachment: 'fixed'
+        }}
+      />
       
-      {/* Hero Section */}
-      <section className="relative py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto text-center">
-          <div className="mb-8">
-            <h1 className="text-5xl md:text-7xl font-bold text-[#080357] dark:text-white mb-6">
-              CaliForce
-            </h1>
-            <p className="text-xl md:text-2xl text-[#080357] dark:text-white mb-4 max-w-3xl mx-auto">
-              Transforme seu corpo com o poder da calistenia. Treinos completos, progressivos e 100% em português do Brasil.
-            </p>
-          </div>
+      {/* Overlay escuro para melhor legibilidade */}
+      <div className="absolute inset-0 z-10 bg-black/30" />
+      
+      <div className="relative z-20">
+        <Header />
+        
+        {/* Hero Section */}
+        <section className="relative py-20 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto text-center">
+            <div className="mb-8">
+              <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
+                CaliForce
+              </h1>
+              <p className="text-xl md:text-2xl text-white mb-4 max-w-3xl mx-auto">
+                Transforme seu corpo com o poder da calistenia. Treinos completos e progressivos.
+              </p>
+            </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 max-w-4xl mx-auto">
-            <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0">
+            <Card className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm border-0 shadow-lg">
               <CardHeader>
-                <Target className="h-8 w-8 text-[#FF9F1C] mx-auto mb-2" />
-                <CardTitle className="text-[#080357] dark:text-white">Foco em Resultados</CardTitle>
+                <Target className="h-8 w-8 text-[#22c55e] mx-auto mb-2" />
+                <CardTitle className="text-[#1a1a1a] dark:text-white">Foco em Resultados</CardTitle>
               </CardHeader>
               <CardContent>
-                <CardDescription className="text-gray-600 dark:text-gray-300">
+                <CardDescription className="text-gray-700 dark:text-gray-300">
                   Ciclos de treino progressivos que levam você do iniciante ao avançado com segurança.
                 </CardDescription>
               </CardContent>
             </Card>
             
-            <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0">
+            <Card className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm border-0 shadow-lg">
               <CardHeader>
-                <Zap className="h-8 w-8 text-[#FF9F1C] mx-auto mb-2" />
-                <CardTitle className="text-[#080357] dark:text-white">100% Peso Corporal</CardTitle>
+                <Zap className="h-8 w-8 text-[#eab308] mx-auto mb-2" />
+                <CardTitle className="text-[#1a1a1a] dark:text-white">100% Peso Corporal</CardTitle>
               </CardHeader>
               <CardContent>
-                <CardDescription className="text-gray-600 dark:text-gray-300">
+                <CardDescription className="text-gray-700 dark:text-gray-300">
                   Treinos em qualquer lugar, sem equipamentos. Use o peso do seu corpo para construir força real.
                 </CardDescription>
               </CardContent>
             </Card>
             
-            <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0">
+            <Card className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm border-0 shadow-lg">
               <CardHeader>
-                <Users className="h-8 w-8 text-[#FF9F1C] mx-auto mb-2" />
-                <CardTitle className="text-[#080357] dark:text-white">Comunidade BR</CardTitle>
+                <Users className="h-8 w-8 text-[#f97316] mx-auto mb-2" />
+                <CardTitle className="text-[#1a1a1a] dark:text-white">Comunidade BR</CardTitle>
               </CardHeader>
               <CardContent>
-                <CardDescription className="text-gray-600 dark:text-gray-300">
-                  Conteúdo feito por brasileiros, para brasileiros. Todos os exercícios em português natural.
+                <CardDescription className="text-gray-700 dark:text-gray-300">
+                  Conteúdo feito por brasileiros, para brasileiros. Todos os exercícios em português.
                 </CardDescription>
               </CardContent>
             </Card>

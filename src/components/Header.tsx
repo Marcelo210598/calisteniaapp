@@ -12,8 +12,7 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
         <Link href="/" className="flex items-center space-x-2">
-          <Dumbbell className="h-6 w-6 text-[#FF9F1C]" />
-          <span className="text-xl font-bold text-[#080357] dark:text-white">CaliForce</span>
+          <img src="/califorce-logo.svg" alt="CaliForce" className="h-8 w-auto" />
         </Link>
         
         <nav className="flex items-center space-x-4">

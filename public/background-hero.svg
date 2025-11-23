@@ -1,0 +1,80 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+  <!-- Gradiente de fundo -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a1a;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#0f0f0f;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#000000;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="humanGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#22c55e;stop-opacity:0.8" />
+      <stop offset="50%" style="stop-color:#eab308;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#f97316;stop-opacity:0.8" />
+    </linearGradient>
+    
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Fundo -->
+  <rect width="1920" height="1080" fill="url(#bgGradient)"/>
+  
+  <!-- Elementos abstratos no fundo -->
+  <circle cx="200" cy="200" r="150" fill="#22c55e" opacity="0.1"/>
+  <circle cx="1720" cy="880" r="200" fill="#f97316" opacity="0.1"/>
+  <circle cx="960" cy="540" r="300" fill="#eab308" opacity="0.05"/>
+  
+  <!-- Figura fazendo human flag -->
+  <g transform="translate(960, 400)">
+    <!-- Barra vertical -->
+    <rect x="-5" y="-200" width="10" height="400" fill="#444" rx="5"/>
+    
+    <!-- Corpo humano em posição de bandeira -->
+    <!-- Braço segurando a barra -->
+    <rect x="-5" y="-10" width="8" height="25" fill="url(#humanGradient)" rx="4" transform="rotate(-90 0 0)"/>
+    
+    <!-- Corpo estendido horizontalmente -->
+    <rect x="0" y="-5" width="120" height="12" fill="url(#humanGradient)" rx="6"/>
+    
+    <!-- Cabeça -->
+    <circle cx="115" cy="0" r="8" fill="url(#humanGradient)"/>
+    
+    <!-- Perna superior -->
+    <rect x="80" y="-8" width="6" height="40" fill="url(#humanGradient)" rx="3" transform="rotate(-10 83 6)"/>
+    
+    <!-- Perna inferior -->
+    <rect x="80" y="25" width="6" height="35" fill="url(#humanGradient)" rx="3" transform="rotate(15 83 32)"/>
+    
+    <!-- Braço livre -->
+    <rect x="100" y="-8" width="6" height="30" fill="url(#humanGradient)" rx="3" transform="rotate(-20 103 -2)"/>
+  </g>
+  
+  <!-- Texto principal -->
+  <text x="960" y="650" font-family="Arial, sans-serif" font-size="72" font-weight="bold" text-anchor="middle" fill="url(#humanGradient)" filter="url(#glow)">
+    CALIFORCE
+  </text>
+  
+  <!-- Subtítulo -->
+  <text x="960" y="720" font-family="Arial, sans-serif" font-size="32" font-weight="500" text-anchor="middle" fill="#ffffff">
+    Transforme seu corpo com o poder da calistenia
+  </text>
+  
+  <!-- Descrição -->
+  <text x="960" y="780" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#cccccc">
+    Treinos completos e progressivos
+  </text>
+  
+  <!-- Elementos decorativos adicionais -->
+  <g opacity="0.3">
+    <!-- Linhas dinâmicas -->
+    <path d="M 100 800 Q 400 700 700 800" stroke="#22c55e" stroke-width="2" fill="none"/>
+    <path d="M 1220 800 Q 1520 700 1820 800" stroke="#f97316" stroke-width="2" fill="none"/>
+    <path d="M 480 900 Q 960 850 1440 900" stroke="#eab308" stroke-width="3" fill="none"/>
+  </g>
+</svg>

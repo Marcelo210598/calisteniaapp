@@ -1,0 +1,27 @@
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <!-- Figura humana estilizada miniatura -->
+  <g transform="translate(16, 16)">
+    <!-- Cabeça -->
+    <circle cx="0" cy="-6" r="4" fill="url(#gradient)"/>
+    
+    <!-- Corpo -->
+    <rect x="-1.5" y="-2" width="3" height="8" rx="1.5" fill="url(#gradient)"/>
+    
+    <!-- Braços -->
+    <rect x="-8" y="-1" width="6" height="1.5" rx="0.75" fill="url(#gradient)" transform="rotate(-30 0 0)"/>
+    <rect x="2" y="-1" width="6" height="1.5" rx="0.75" fill="url(#gradient)" transform="rotate(30 0 0)"/>
+    
+    <!-- Pernas -->
+    <rect x="-5" y="5" width="1.5" height="7" rx="0.75" fill="url(#gradient)" transform="rotate(-15 0 0)"/>
+    <rect x="3.5" y="5" width="1.5" height="7" rx="0.75" fill="url(#gradient)" transform="rotate(15 0 0)"/>
+  </g>
+  
+  <!-- Gradiente -->
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#22c55e;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#eab308;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f97316;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+</svg>

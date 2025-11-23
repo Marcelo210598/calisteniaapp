@@ -1,0 +1,32 @@
+<svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fundo transparente -->
+  
+  <!-- Figura humana estilizada (maior para favicon) -->
+  <g transform="translate(128, 80)">
+    <!-- Cabeça -->
+    <circle cx="0" cy="-25" r="20" fill="url(#gradient)"/>
+    
+    <!-- Corpo -->
+    <rect x="-5" y="-10" width="10" height="35" rx="5" fill="url(#gradient)"/>
+    
+    <!-- Braços -->
+    <rect x="-30" y="-8" width="25" height="6" rx="3" fill="url(#gradient)" transform="rotate(-30 0 0)"/>
+    <rect x="5" y="-8" width="25" height="6" rx="3" fill="url(#gradient)" transform="rotate(30 0 0)"/>
+    
+    <!-- Pernas -->
+    <rect x="-18" y="20" width="6" height="30" rx="3" fill="url(#gradient)" transform="rotate(-15 0 0)"/>
+    <rect x="12" y="20" width="6" height="30" rx="3" fill="url(#gradient)" transform="rotate(15 0 0)"/>
+  </g>
+  
+  <!-- Texto CALIFORCE (maior) -->
+  <text x="128" y="180" font-family="Arial, sans-serif" font-size="48" font-weight="bold" text-anchor="middle" fill="url(#gradient)">CALIFORCE</text>
+  
+  <!-- Gradiente -->
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#22c55e;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#eab308;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f97316;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+</svg>
