@@ -64,7 +64,7 @@ export function ExerciseCard({ exercise }: ExerciseCardProps) {
             ))}
           </div>
         </div>
-        <Link href={`/exercicios/${exercise.slug}`}>
+        <Link href={`/exercicios/${exercise.slug}`} prefetch={true}>
           <Button className="w-full bg-[#FF9F1C] hover:bg-[#FFC15E] text-white">
             Ver Detalhes
           </Button>
