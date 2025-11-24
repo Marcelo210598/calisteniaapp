@@ -42,10 +42,10 @@ export default function RootLayout({
     <html lang="pt-BR" suppressHydrationWarning>
       <head>
         <link rel="manifest" href="/manifest.json" />
-        <link rel="icon" href="/califorce-favicon.svg" type="image/svg+xml" />
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="icon" href="/fav.png" type="image/png" />
+        <link rel="icon" href="/fav.png" type="image/png" />
         <meta name="theme-color" content="#22c55e" />
-        <link rel="apple-touch-icon" href="/califorce-favicon.svg" />
+        <link rel="apple-touch-icon" href="/fav.png" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
