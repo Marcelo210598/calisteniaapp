@@ -7,6 +7,7 @@ import { exercises } from '@/data/exercises';
 import { Dumbbell, Target, Zap, Users, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { ProgressCounter } from '@/components/ProgressCounter';
+import { HistorySheet } from '@/components/HistorySheet';
 
 export default function HomePage() {
   const featuredExercises = exercises.slice(0, 6);
@@ -33,11 +34,12 @@ export default function HomePage() {
           {/* Dark Overlay */}
           <div className="absolute inset-0 z-10 bg-black/65" />
 
+
           {/* Hero Content */}
           <div className="relative z-20 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto animate-in fade-in zoom-in duration-1000">
-            <Badge className="mb-6 bg-[#FF9F1C] text-white hover:bg-[#FFC15E] px-4 py-1 text-sm uppercase tracking-wider">
-              A Revolução da Calistenia
-            </Badge>
+            <div className="mb-6">
+              <HistorySheet />
+            </div>
             <h1 className="text-6xl md:text-8xl font-extrabold text-white mb-6 tracking-tight drop-shadow-2xl">
               CALIFORCE
             </h1>
