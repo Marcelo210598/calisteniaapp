@@ -10,11 +10,11 @@ export function HistorySheet() {
         <Sheet>
             <SheetTrigger asChild>
                 <Button
-                    size="lg"
-                    className="bg-[#FF9F1C] hover:bg-[#FFC15E] text-white px-10 py-8 text-xl rounded-full shadow-[0_0_20px_rgba(255,159,28,0.5)] hover:scale-105 transition-transform duration-300"
+                    className="h-12 sm:h-14 md:h-16 min-h-12 max-h-16 bg-[#FF9F1C] hover:bg-[#FFC15E] active:scale-95 text-white px-4 sm:px-6 md:px-8 text-sm sm:text-base md:text-lg rounded-full shadow-[0_0_20px_rgba(255,159,28,0.5)] hover:scale-105 transition-all duration-150"
                 >
-                    <BookOpen className="mr-3 h-6 w-6" />
-                    A Verdadeira História da Calistenia (500 a.C. até hoje)
+                    <BookOpen className="mr-2 h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 flex-shrink-0" />
+                    <span className="hidden sm:inline">A Verdadeira História da Calistenia (500 a.C. até hoje)</span>
+                    <span className="sm:hidden">História da Calistenia</span>
                 </Button>
             </SheetTrigger>
             <SheetContent

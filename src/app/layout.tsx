@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Footer } from "@/components/Footer";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { PWAInstallPrompt } from "@/components/PWAInstallPrompt";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -46,8 +47,9 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.json" />
         <link rel="icon" href="/fav.png" type="image/png" />
         <link rel="icon" href="/fav.png" type="image/png" />
-        <meta name="theme-color" content="#22c55e" />
+        <meta name="theme-color" content="#FF9F1C" />
         <link rel="apple-touch-icon" href="/fav.png" />
+        <style dangerouslySetInnerHTML={{ __html: `html { scroll-behavior: smooth; }` }} />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
@@ -58,6 +60,7 @@ export default function RootLayout({
             <Footer />
           </div>
           <WhatsAppButton />
+          <PWAInstallPrompt />
         </ThemeProvider>
       </body>
     </html>

@@ -40,23 +40,23 @@ export default function HomePage() {
             <div className="mb-6">
               <HistorySheet />
             </div>
-            <h1 className="text-6xl md:text-8xl font-extrabold text-white mb-6 tracking-tight drop-shadow-2xl">
+            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-white mb-6 tracking-tight drop-shadow-2xl">
               CALIFORCE
             </h1>
-            <p className="text-xl md:text-3xl text-gray-200 mb-10 max-w-3xl mx-auto font-light leading-relaxed">
+            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-200 mb-8 md:mb-10 max-w-3xl mx-auto font-light leading-relaxed">
               Domine seu corpo. Treine em qualquer lugar. <br className="hidden md:block" />
               A plataforma definitiva de calistenia brasileira.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <Link href="/exercicios" prefetch={true}>
-                <Button size="lg" className="bg-[#FF9F1C] hover:bg-[#FFC15E] text-white px-10 py-8 text-xl rounded-full shadow-[0_0_20px_rgba(255,159,28,0.5)] hover:scale-105 transition-transform duration-300">
+                <Button className="h-14 md:h-16 min-h-12 max-h-16 bg-[#FF9F1C] hover:bg-[#FFC15E] active:scale-95 text-white px-8 md:px-10 text-base md:text-lg rounded-full shadow-[0_0_20px_rgba(255,159,28,0.5)] hover:scale-105 transition-all duration-150">
                   <Dumbbell className="mr-3 h-6 w-6" />
                   COMEÇAR AGORA
                 </Button>
               </Link>
               <Link href="/ciclos">
-                <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-[#080357] px-10 py-8 text-xl rounded-full bg-transparent backdrop-blur-sm transition-all duration-300">
+                <Button variant="outline" className="h-14 md:h-16 min-h-12 max-h-16 border-2 border-white text-white hover:bg-white hover:text-[#080357] active:scale-95 px-8 md:px-10 text-base md:text-lg rounded-full bg-transparent backdrop-blur-sm transition-all duration-150">
                   Ver Ciclos
                 </Button>
               </Link>

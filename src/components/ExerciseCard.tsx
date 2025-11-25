@@ -38,7 +38,7 @@ export function ExerciseCard({ exercise }: ExerciseCardProps) {
   };
 
   return (
-    <Card className="h-full hover:shadow-lg transition-shadow duration-300 border-2 border-transparent hover:border-[#FF9F1C]">
+    <Card className="h-full hover:shadow-lg active:scale-98 transition-all duration-200 border-2 border-transparent hover:border-[#FF9F1C]">
       <CardHeader>
         <div className="flex justify-between items-start mb-2">
           <Badge className={getDifficultyColor(exercise.difficulty)}>
@@ -65,7 +65,7 @@ export function ExerciseCard({ exercise }: ExerciseCardProps) {
           </div>
         </div>
         <Link href={`/exercicios/${exercise.slug}`} prefetch={true}>
-          <Button className="w-full bg-[#FF9F1C] hover:bg-[#FFC15E] text-white">
+          <Button className="w-full h-12 md:h-14 min-h-12 max-h-14 bg-[#FF9F1C] hover:bg-[#FFC15E] active:scale-95 text-white transition-all duration-150">
             Ver Detalhes
           </Button>
         </Link>
