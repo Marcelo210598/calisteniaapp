@@ -1,121 +1,180 @@
+'use client';
+
 import { Header } from '@/components/Header';
 import { cycles } from '@/data/cycles';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Target, Calendar, Clock, ArrowRight } from 'lucide-react';
-import Link from 'next/link';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Target, Calendar, Clock, CheckCircle, Circle, Dumbbell } from 'lucide-react';
+import { useProgressStore } from '@/store/progressStore';
+import { useEffect, useState } from 'react';
+import confetti from 'canvas-confetti';
 
 export default function CyclesPage() {
+  const { isWorkoutCompleted, toggleWorkout } = useProgressStore();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const handleToggleWorkout = (workoutId: string) => {
+    const isCompleted = isWorkoutCompleted(workoutId);
+    toggleWorkout(workoutId);
+
+    if (!isCompleted) {
+      confetti({
+        particleCount: 50,
+        spread: 60,
+        origin: { y: 0.7 },
+        colors: ['#FF9F1C', '#D6FFB7', '#F5FF90']
+      });
+    }
+  };
+
+  if (!mounted) return null;
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#D6FFB7] via-[#F5FF90] to-[#FFC15E] dark:from-[#080357] dark:via-[#1e293b] dark:to-[#334155]">
       <Header />
-      
+
       {/* Page Header */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
+      <section className="py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
           <div className="flex items-center justify-center mb-4">
-            <Target className="h-8 w-8 text-[#FF9F1C] mr-3" />
-            <h1 className="text-4xl md:text-5xl font-bold text-[#080357] dark:text-white">
+            <Target className="h-10 w-10 text-[#FF9F1C] mr-3" />
+            <h1 className="text-4xl md:text-6xl font-bold text-[#080357] dark:text-white">
               Ciclos de Treino
             </h1>
           </div>
           <p className="text-xl text-[#080357] dark:text-white max-w-3xl mx-auto">
-            Planos de treino estruturados de 4 semanas para levar você do iniciante ao avançado. 
-            Cada ciclo é cuidadosamente planejado para maximizar seus resultados.
+            Escolha seu nível e siga o plano. A consistência é a chave para o sucesso.
           </p>
         </div>
       </section>
 
-      {/* Cycles Grid */}
-      <section className="py-8 px-4 sm:px-6 lg:px-8 pb-16">
+      {/* Cycles Tabs */}
+      <section className="px-4 sm:px-6 lg:px-8 pb-16">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
-            {cycles.map((cycle) => (
-              <Card key={cycle.id} className="h-full hover:shadow-xl transition-shadow duration-300 border-2 border-transparent hover:border-[#FF9F1C]">
-                <CardHeader>
-                  <div className="flex justify-between items-start mb-4">
-                    <Badge className="bg-[#FF9F1C] text-white">
-                      {cycle.duration}
-                    </Badge>
-                  </div>
-                  <CardTitle className="text-2xl text-[#080357] dark:text-white">
-                    {cycle.name}
-                  </CardTitle>
-                  <CardDescription className="text-gray-600 dark:text-gray-300">
-                    {cycle.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300">
-                      <Calendar className="h-4 w-4" />
-                      <span>{cycle.weeks.length} semanas de treino</span>
-                    </div>
-                    <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300">
-                      <Clock className="h-4 w-4" />
-                      <span>3 treinos por semana</span>
-                    </div>
-                    
-                    <Accordion type="single" collapsible className="w-full">
-                      <AccordionItem value="overview">
-                        <AccordionTrigger className="text-[#080357] dark:text-white">
-                          Ver Resumo do Ciclo
-                        </AccordionTrigger>
-                        <AccordionContent>
-                          <div className="space-y-4">
-                            {cycle.weeks.slice(0, 2).map((week) => (
-                              <div key={week.weekNumber} className="border-l-4 border-[#FF9F1C] pl-4">
-                                <h4 className="font-semibold text-[#080357] dark:text-white">
-                                  Semana {week.weekNumber}
-                                </h4>
-                                <p className="text-sm text-gray-600 dark:text-gray-300">
-                                  {week.workouts.length} treinos focados em desenvolvimento progressivo
-                                </p>
-                              </div>
-                            ))}
-                            {cycle.weeks.length > 2 && (
-                              <p className="text-sm text-gray-500 dark:text-gray-400">
-                                ... e mais {cycle.weeks.length - 2} semanas de progressão
-                              </p>
-                            )}
-                          </div>
-                        </AccordionContent>
-                      </AccordionItem>
-                    </Accordion>
-                    
-                    <Link href={`/ciclos/${cycle.id}`} className="block">
-                      <Button className="w-full bg-[#FF9F1C] hover:bg-[#FFC15E] text-white">
-                        Ver Detalhes do Ciclo
-                        <ArrowRight className="ml-2 h-4 w-4" />
-                      </Button>
-                    </Link>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+          <Tabs defaultValue={cycles[0].id} className="w-full">
+            <TabsList className="grid w-full grid-cols-3 mb-8 bg-white/50 dark:bg-black/20 p-1 rounded-xl">
+              {cycles.map((cycle) => (
+                <TabsTrigger
+                  key={cycle.id}
+                  value={cycle.id}
+                  className="text-lg py-3 data-[state=active]:bg-[#FF9F1C] data-[state=active]:text-white rounded-lg transition-all"
+                >
+                  {cycle.name.replace('CaliForce ', '')}
+                </TabsTrigger>
+              ))}
+            </TabsList>
 
-      {/* CTA Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#080357] dark:text-white mb-6">
-            Pronto para Começar?
-          </h2>
-          <p className="text-xl text-[#080357] dark:text-white mb-8">
-            Escolha seu ciclo e comece sua transformação hoje mesmo. 
-            Cada jornada começa com um único passo!
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/exercicios">
-              <Button size="lg" variant="outline" className="border-[#080357] text-[#080357] hover:bg-[#080357] hover:text-white px-8 py-6 text-lg">
-                Explorar Exercícios
-              </Button>
-            </Link>
-          </div>
+            {cycles.map((cycle) => (
+              <TabsContent key={cycle.id} value={cycle.id} className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+                <Card className="border-none shadow-2xl bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm">
+                  <CardHeader>
+                    <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                      <div>
+                        <CardTitle className="text-3xl text-[#080357] dark:text-white mb-2">
+                          {cycle.name}
+                        </CardTitle>
+                        <CardDescription className="text-lg text-gray-600 dark:text-gray-300">
+                          {cycle.description}
+                        </CardDescription>
+                      </div>
+                      <Badge className="bg-[#FF9F1C] text-white text-lg px-4 py-1">
+                        {cycle.duration}
+                      </Badge>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <Accordion type="single" collapsible className="w-full space-y-4">
+                      {cycle.weeks.map((week) => (
+                        <AccordionItem key={week.weekNumber} value={`week-${week.weekNumber}`} className="border rounded-xl px-4 bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700">
+                          <AccordionTrigger className="hover:no-underline py-4">
+                            <div className="flex items-center gap-4">
+                              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#D6FFB7] text-[#080357] font-bold">
+                                {week.weekNumber}
+                              </span>
+                              <span className="text-xl font-semibold text-[#080357] dark:text-white">
+                                Semana {week.weekNumber}
+                              </span>
+                            </div>
+                          </AccordionTrigger>
+                          <AccordionContent className="pt-4 pb-6">
+                            <div className="grid gap-6">
+                              {week.workouts.map((workout, index) => {
+                                const workoutId = `${cycle.id}-w${week.weekNumber}-d${index}`;
+                                const isCompleted = isWorkoutCompleted(workoutId);
+
+                                return (
+                                  <div key={index} className={`p-6 rounded-xl border transition-all ${isCompleted
+                                      ? 'bg-[#D6FFB7]/20 border-[#D6FFB7] dark:bg-[#D6FFB7]/10'
+                                      : 'bg-gray-50 dark:bg-gray-800 border-gray-100 dark:border-gray-700'
+                                    }`}>
+                                    <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
+                                      <div className="flex items-center gap-3">
+                                        <Calendar className="h-5 w-5 text-[#FF9F1C]" />
+                                        <h4 className="text-lg font-bold text-[#080357] dark:text-white">
+                                          {workout.day}
+                                        </h4>
+                                      </div>
+                                      <Button
+                                        variant={isCompleted ? "default" : "outline"}
+                                        size="sm"
+                                        onClick={() => handleToggleWorkout(workoutId)}
+                                        className={isCompleted
+                                          ? "bg-[#22c55e] hover:bg-[#16a34a] text-white"
+                                          : "border-[#FF9F1C] text-[#FF9F1C] hover:bg-[#FF9F1C] hover:text-white"
+                                        }
+                                      >
+                                        {isCompleted ? (
+                                          <>
+                                            <CheckCircle className="mr-2 h-4 w-4" />
+                                            Concluído
+                                          </>
+                                        ) : (
+                                          <>
+                                            <Circle className="mr-2 h-4 w-4" />
+                                            Marcar como Feito
+                                          </>
+                                        )}
+                                      </Button>
+                                    </div>
+
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                                      {workout.exercises.map((ex, idx) => (
+                                        <div key={idx} className="flex items-start gap-3 p-3 rounded-lg bg-white dark:bg-gray-700 shadow-sm">
+                                          <Dumbbell className="h-5 w-5 text-[#FF9F1C] mt-1 shrink-0" />
+                                          <div>
+                                            <p className="font-semibold text-[#080357] dark:text-white">
+                                              {ex.name}
+                                            </p>
+                                            <p className="text-sm text-gray-500 dark:text-gray-300">
+                                              {ex.sets} séries x {ex.reps}
+                                            </p>
+                                            <p className="text-xs text-gray-400 dark:text-gray-400 mt-1">
+                                              Descanso: {ex.rest}
+                                            </p>
+                                          </div>
+                                        </div>
+                                      ))}
+                                    </div>
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          </AccordionContent>
+                        </AccordionItem>
+                      ))}
+                    </Accordion>
+                  </CardContent>
+                </Card>
+              </TabsContent>
+            ))}
+          </Tabs>
         </div>
       </section>
     </div>

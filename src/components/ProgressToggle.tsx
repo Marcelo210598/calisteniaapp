@@ -1,10 +1,10 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { CheckCircle, Circle } from 'lucide-react';
 import { useProgressStore } from '@/store/progressStore';
+import { CheckCircle, Circle } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import confetti from 'canvas-confetti';
 
 interface ProgressToggleProps {
   exerciseId: string;
@@ -12,43 +12,52 @@ interface ProgressToggleProps {
 }
 
 export function ProgressToggle({ exerciseId, exerciseName }: ProgressToggleProps) {
+  const { isExerciseCompleted, toggleExercise } = useProgressStore();
   const [isCompleted, setIsCompleted] = useState(false);
-  const { addProgress, removeProgress, getProgressByExercise } = useProgressStore();
-  
-  const today = new Date().toISOString().split('T')[0];
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const progress = getProgressByExercise(exerciseId);
-    const todayProgress = progress.find(p => p.date === today);
-    setIsCompleted(!!todayProgress);
-  }, [exerciseId, getProgressByExercise]);
+    setMounted(true);
+    setIsCompleted(isExerciseCompleted(exerciseId));
+  }, [exerciseId, isExerciseCompleted]);
 
-  const toggleProgress = () => {
-    if (isCompleted) {
-      removeProgress(exerciseId, today);
-      setIsCompleted(false);
-    } else {
-      addProgress(exerciseId, `Treino ${exerciseName} concluído!`);
-      setIsCompleted(true);
+  const handleToggle = () => {
+    const newState = !isCompleted;
+    setIsCompleted(newState);
+    toggleExercise(exerciseId);
+
+    if (newState) {
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 },
+        colors: ['#FF9F1C', '#D6FFB7', '#F5FF90']
+      });
     }
   };
 
+  if (!mounted) return null;
+
   return (
     <Button
-      onClick={toggleProgress}
-      variant={isCompleted ? "default" : "outline"}
-      className={`flex items-center space-x-2 ${
-        isCompleted 
-          ? 'bg-[#D6FFB7] hover:bg-[#F5FF90] text-[#080357]' 
-          : 'border-[#FF9F1C] text-[#FF9F1C] hover:bg-[#FF9F1C] hover:text-white'
-      }`}
+      size="lg"
+      onClick={handleToggle}
+      className={`w-full md:w-auto text-lg px-8 py-6 transition-all duration-300 ${isCompleted
+          ? 'bg-[#D6FFB7] text-[#080357] hover:bg-[#bdfca0]'
+          : 'bg-[#080357] text-white hover:bg-[#0a046e]'
+        }`}
     >
       {isCompleted ? (
-        <CheckCircle className="h-4 w-4" />
+        <>
+          <CheckCircle className="mr-2 h-6 w-6" />
+          Concluído
+        </>
       ) : (
-        <Circle className="h-4 w-4" />
+        <>
+          <Circle className="mr-2 h-6 w-6" />
+          Marcar como Concluído
+        </>
       )}
-      <span>{isCompleted ? 'Concluído Hoje' : 'Marcar Concluído'}</span>
     </Button>
   );
 }

@@ -1,161 +1,137 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { useProgressStore } from '@/store/progressStore';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Calendar, Trash2, Target } from 'lucide-react';
+import { Progress } from '@/components/ui/progress';
+import { CheckCircle, Trophy, Target, Flame } from 'lucide-react';
+import { useEffect, useState } from 'react';
 import { exercises } from '@/data/exercises';
-import { useProgressStore } from '@/store/progressStore';
+import Link from 'next/link';
 
 export function ProgressDashboard() {
-  const { progress, clearAllProgress } = useProgressStore();
+  const { completedExercises, completedWorkouts, getCompletedCount } = useProgressStore();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  if (!mounted) {
-    return null;
-  }
+  if (!mounted) return null;
 
-  const today = new Date().toISOString().split('T')[0];
-  const todayProgress = progress.filter(p => p.date === today);
-  const totalProgress = progress.length;
-  const uniqueDates = [...new Set(progress.map(p => p.date))].length;
-
-  const getProgressByDate = () => {
-    const grouped = progress.reduce((acc, item) => {
-      if (!acc[item.date]) {
-        acc[item.date] = [];
-      }
-      acc[item.date].push(item);
-      return acc;
-    }, {} as Record<string, typeof progress>);
-
-    return Object.entries(grouped)
-      .sort(([a], [b]) => b.localeCompare(a))
-      .slice(0, 7);
-  };
+  const totalExercises = exercises.length;
+  const completedCount = getCompletedCount();
+  const completionPercentage = Math.round((completedCount / totalExercises) * 100);
+  const workoutsCompleted = completedWorkouts.length;
 
   return (
-    <div className="space-y-6">
-      {/* Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0">
+    <div className="space-y-8">
+      {/* Stats Overview */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <Card className="bg-gradient-to-br from-[#D6FFB7] to-[#F5FF90] border-none shadow-xl">
           <CardHeader className="pb-3">
-            <CardTitle className="text-lg text-[#080357] dark:text-white flex items-center">
-              <Target className="h-5 w-5 mr-2 text-[#FF9F1C]" />
-              Total de Exercícios
+            <CardTitle className="text-[#080357] flex items-center gap-2">
+              <Trophy className="h-5 w-5" />
+              Exercícios Concluídos
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-[#080357] dark:text-white">
-              {totalProgress}
-            </div>
-            <p className="text-sm text-gray-600 dark:text-gray-300">
-              exercícios completados
-            </p>
+            <div className="text-4xl font-bold text-[#080357]">{completedCount}</div>
+            <p className="text-sm text-[#080357]/70">de {totalExercises} exercícios</p>
           </CardContent>
         </Card>
 
-        <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0">
+        <Card className="bg-gradient-to-br from-[#FFC15E] to-[#FF9F1C] border-none shadow-xl">
           <CardHeader className="pb-3">
-            <CardTitle className="text-lg text-[#080357] dark:text-white flex items-center">
-              <Calendar className="h-5 w-5 mr-2 text-[#FF9F1C]" />
-              Dias de Treino
+            <CardTitle className="text-white flex items-center gap-2">
+              <Flame className="h-5 w-5" />
+              Treinos Completos
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-[#080357] dark:text-white">
-              {uniqueDates}
-            </div>
-            <p className="text-sm text-gray-600 dark:text-gray-300">
-              dias diferentes treinados
-            </p>
+            <div className="text-4xl font-bold text-white">{workoutsCompleted}</div>
+            <p className="text-sm text-white/80">treinos finalizados</p>
           </CardContent>
         </Card>
 
-        <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0">
+        <Card className="bg-gradient-to-br from-[#080357] to-[#1e293b] border-none shadow-xl">
           <CardHeader className="pb-3">
-            <CardTitle className="text-lg text-[#080357] dark:text-white flex items-center">
-              <Target className="h-5 w-5 mr-2 text-[#FF9F1C]" />
-              Hoje
+            <CardTitle className="text-white flex items-center gap-2">
+              <Target className="h-5 w-5" />
+              Progresso Total
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-[#080357] dark:text-white">
-              {todayProgress.length}
-            </div>
-            <p className="text-sm text-gray-600 dark:text-gray-300">
-              exercícios completados hoje
-            </p>
+            <div className="text-4xl font-bold text-white">{completionPercentage}%</div>
+            <p className="text-sm text-white/80">da jornada completa</p>
           </CardContent>
         </Card>
       </div>
 
-      {/* Recent Progress */}
-      {progress.length > 0 && (
-        <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0">
-          <CardHeader className="flex flex-row items-center justify-between">
-            <CardTitle className="text-xl text-[#080357] dark:text-white">
-              Progresso Recentemente
+      {/* Progress Bar */}
+      <Card className="border-none shadow-xl">
+        <CardHeader>
+          <CardTitle className="text-[#080357] dark:text-white">Seu Progresso Geral</CardTitle>
+          <CardDescription>Continue assim! Cada exercício te aproxima do seu objetivo.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Progress value={completionPercentage} className="h-4" indicatorClassName="bg-gradient-to-r from-[#D6FFB7] via-[#F5FF90] to-[#FF9F1C]" />
+          <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
+            {completedCount} de {totalExercises} exercícios completados
+          </p>
+        </CardContent>
+      </Card>
+
+      {/* Recent Completed Exercises */}
+      {completedExercises.length > 0 && (
+        <Card className="border-none shadow-xl">
+          <CardHeader>
+            <CardTitle className="text-[#080357] dark:text-white flex items-center gap-2">
+              <CheckCircle className="h-5 w-5 text-[#22c55e]" />
+              Exercícios Concluídos
             </CardTitle>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={clearAllProgress}
-              className="border-red-500 text-red-500 hover:bg-red-500 hover:text-white"
-            >
-              <Trash2 className="h-4 w-4 mr-1" />
-              Limpar Tudo
-            </Button>
           </CardHeader>
           <CardContent>
-            <div className="space-y-4">
-              {getProgressByDate().map(([date, dayProgress]) => (
-                <div key={date} className="border-l-4 border-[#FF9F1C] pl-4">
-                  <div className="flex justify-between items-center mb-2">
-                    <h4 className="font-semibold text-[#080357] dark:text-white">
-                      {new Date(date).toLocaleDateString('pt-BR', {
-                        weekday: 'long',
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric'
-                      })}
-                    </h4>
-                    <Badge className="bg-[#D6FFB7] text-[#080357]">
-                      {dayProgress.length} exercícios
-                    </Badge>
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {dayProgress.map((item, index) => {
-                      const exercise = exercises.find(ex => ex.id === item.exerciseId);
-                      return (
-                        <Badge key={index} variant="secondary" className="text-xs">
-                          {exercise ? exercise.name : item.exerciseId}
-                        </Badge>
-                      );
-                    })}
-                  </div>
-                </div>
-              ))}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {completedExercises.slice(0, 6).map((exerciseId) => {
+                const exercise = exercises.find(ex => ex.id === exerciseId);
+                if (!exercise) return null;
+
+                return (
+                  <Link key={exerciseId} href={`/exercicios/${exercise.slug}`}>
+                    <div className="p-4 rounded-lg bg-[#D6FFB7]/20 dark:bg-[#D6FFB7]/10 border border-[#D6FFB7] hover:bg-[#D6FFB7]/30 transition-colors cursor-pointer">
+                      <div className="flex items-start gap-3">
+                        <CheckCircle className="h-5 w-5 text-[#22c55e] mt-0.5 shrink-0" />
+                        <div>
+                          <p className="font-semibold text-[#080357] dark:text-white">{exercise.name}</p>
+                          <Badge className="mt-1 bg-[#22c55e] text-white">Concluído</Badge>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                );
+              })}
             </div>
           </CardContent>
         </Card>
       )}
 
-      {progress.length === 0 && (
-        <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0">
-          <CardContent className="text-center py-12">
-            <Target className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-            <h3 className="text-lg font-semibold text-gray-600 dark:text-gray-300 mb-2">
-              Nenhum progresso registrado ainda
-            </h3>
-            <p className="text-gray-500 dark:text-gray-400">
-              Comece treinando e marque seus exercícios como concluídos!
-            </p>
+      {/* Motivational CTA */}
+      {completionPercentage < 100 && (
+        <Card className="bg-gradient-to-r from-[#FF9F1C] to-[#FFC15E] border-none shadow-xl">
+          <CardContent className="pt-6">
+            <div className="text-center text-white">
+              <h3 className="text-2xl font-bold mb-2">Continue sua jornada!</h3>
+              <p className="mb-4 opacity-90">
+                Você está a {totalExercises - completedCount} exercícios de completar toda a biblioteca.
+              </p>
+              <Link href="/exercicios">
+                <Button size="lg" className="bg-white text-[#FF9F1C] hover:bg-gray-100">
+                  Explorar Exercícios
+                </Button>
+              </Link>
+            </div>
           </CardContent>
         </Card>
       )}

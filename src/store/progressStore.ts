@@ -1,49 +1,43 @@
-'use client';
-
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { Progress } from '@/types';
 
 interface ProgressState {
-  progress: Progress[];
-  addProgress: (exerciseId: string, notes?: string) => void;
-  removeProgress: (exerciseId: string, date: string) => void;
-  getProgressByExercise: (exerciseId: string) => Progress[];
-  getProgressByDate: (date: string) => Progress[];
-  clearAllProgress: () => void;
+  completedExercises: string[];
+  completedWorkouts: string[];
+  toggleExercise: (exerciseId: string) => void;
+  toggleWorkout: (workoutId: string) => void;
+  isExerciseCompleted: (exerciseId: string) => boolean;
+  isWorkoutCompleted: (workoutId: string) => boolean;
+  getCompletedCount: () => number;
 }
 
 export const useProgressStore = create<ProgressState>()(
   persist(
     (set, get) => ({
-      progress: [],
-      addProgress: (exerciseId, notes) => {
-        const date = new Date().toISOString().split('T')[0];
-        const newProgress: Progress = {
-          exerciseId,
-          completed: true,
-          date,
-          notes,
+      completedExercises: [],
+      completedWorkouts: [],
+
+      toggleExercise: (exerciseId) => set((state) => {
+        const isCompleted = state.completedExercises.includes(exerciseId);
+        return {
+          completedExercises: isCompleted
+            ? state.completedExercises.filter(id => id !== exerciseId)
+            : [...state.completedExercises, exerciseId]
         };
-        
-        set((state) => ({
-          progress: [...state.progress.filter(p => !(p.exerciseId === exerciseId && p.date === date)), newProgress],
-        }));
-      },
-      removeProgress: (exerciseId, date) => {
-        set((state) => ({
-          progress: state.progress.filter(p => !(p.exerciseId === exerciseId && p.date === date)),
-        }));
-      },
-      getProgressByExercise: (exerciseId) => {
-        return get().progress.filter(p => p.exerciseId === exerciseId);
-      },
-      getProgressByDate: (date) => {
-        return get().progress.filter(p => p.date === date);
-      },
-      clearAllProgress: () => {
-        set({ progress: [] });
-      },
+      }),
+
+      toggleWorkout: (workoutId) => set((state) => {
+        const isCompleted = state.completedWorkouts.includes(workoutId);
+        return {
+          completedWorkouts: isCompleted
+            ? state.completedWorkouts.filter(id => id !== workoutId)
+            : [...state.completedWorkouts, workoutId]
+        };
+      }),
+
+      isExerciseCompleted: (exerciseId) => get().completedExercises.includes(exerciseId),
+      isWorkoutCompleted: (workoutId) => get().completedWorkouts.includes(workoutId),
+      getCompletedCount: () => get().completedExercises.length,
     }),
     {
       name: 'califorce-progress',
