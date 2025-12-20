@@ -5,7 +5,7 @@ export interface Exercise {
   description: string;
   muscleGroups: string[];
   difficulty: 'beginner' | 'intermediate' | 'advanced';
-  category: 'Push' | 'Pull' | 'Legs' | 'Core' | 'Full Body';
+  category: 'Push' | 'Pull' | 'Legs' | 'Core' | 'Full Body' | 'Core / Push' | 'Pull / Core' | 'Equilíbrio / Core' | 'Equilíbrio / Push' | 'Legs / Full Body';
   tips: string[];
   commonMistakes: string[];
   images: string[];
