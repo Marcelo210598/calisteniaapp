@@ -1,4 +1,3 @@
-import { ExerciseImage } from '@/components/ExerciseImage';
 import { Header } from '@/components/Header';
 import { ProgressToggle } from '@/components/ProgressToggle';
 import { Badge } from '@/components/ui/badge';
@@ -113,22 +112,6 @@ export default async function ExercisePage({ params }: ExercisePageProps) {
           </div>
         </section>
       )}
-
-      {/* Exercise Images Gallery */}
-      <section className="mt-12 p-4">
-        <h2 className="text-3xl font-bold text-[#080357] mb-8 text-center">Passo a Passo</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {[1, 2, 3, 4, 5].map((num) => (
-            <ExerciseImage
-              key={num}
-              step={num}
-              src={`/exercicios/${slug}/${num}.jpg`}
-              alt={`Passo ${num} do ${exercise?.name}`}
-              className="w-full h-auto object-cover transition-transform group-hover:scale-110 duration-500"
-            />
-          ))}
-        </div>
-      </section>
 
       {/* Exercise Details */}
       <section className="py-8 px-4 sm:px-6 lg:px-8">
