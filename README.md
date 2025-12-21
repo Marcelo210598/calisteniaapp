@@ -20,6 +20,24 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+### Ativando a CalIA (Assistente de IA)
+
+A CalIA usa o Google Gemini 1.5 Flash — IA rápida, barata e gratuita no nível básico.
+
+1. Acesse https://aistudio.google.com/app/apikey
+2. Crie uma chave gratuita (sem cartão)
+3. Copie a chave
+4. Cole no arquivo `.env.local` na raiz do projeto:
+   ```
+   GEMINI_API_KEY=sua_chave_aqui
+   ```
+5. Reinicie o servidor:
+   ```bash
+   npm run dev
+   ```
+
+Pronto! A CalIA vai responder perguntas sobre treino, alimentação e suplementação em português, de forma motivacional.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
