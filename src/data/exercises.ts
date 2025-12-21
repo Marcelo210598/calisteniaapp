@@ -202,7 +202,7 @@ export const exercises: Exercise[] = [
       'https://images.unsplash.com/photo-1583248369069-9d91f1640fe6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
       'https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
     ],
-    videoUrl: 'https://www.youtube.com/embed/FWizDhYjGsc'
+    videoUrl: 'https://www.youtube.com/embed/2oEsUXJZ7K8'
   },
   {
     id: '7',
@@ -237,7 +237,7 @@ export const exercises: Exercise[] = [
       'https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
       'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
     ],
-    videoUrl: 'https://www.youtube.com/embed/wgkPA4Z9Wa4'
+    videoUrl: 'https://www.youtube.com/embed/IUZJNMjtLH4'
   },
   {
     id: '8',
@@ -447,7 +447,7 @@ export const exercises: Exercise[] = [
       '/exercicios/inclinacao-planche/4.jpg',
       '/exercicios/inclinacao-planche/5.jpg'
     ],
-    videoUrl: 'https://www.youtube.com/embed/roFz5p7FEkY'
+    videoUrl: 'https://www.youtube.com/embed/8QpXsJzXGPQ'
   },
   {
     id: '15',
@@ -476,7 +476,7 @@ export const exercises: Exercise[] = [
       '/exercicios/barra-archer/4.jpg',
       '/exercicios/barra-archer/5.jpg'
     ],
-    videoUrl: 'https://www.youtube.com/embed/fO3dKSQayfg'
+    videoUrl: 'https://www.youtube.com/embed/kBYL3kAJ0Aw'
   },
   {
     id: '16',
@@ -505,7 +505,7 @@ export const exercises: Exercise[] = [
       '/exercicios/pike-push-up-elevado/4.jpg',
       '/exercicios/pike-push-up-elevado/5.jpg'
     ],
-    videoUrl: 'https://www.youtube.com/embed/x4YNi4nRboU'
+    videoUrl: 'https://www.youtube.com/embed/5WRTcFW32WI'
   },
   {
     id: '17',
@@ -621,7 +621,7 @@ export const exercises: Exercise[] = [
       '/exercicios/front-lever/4.jpg',
       '/exercicios/front-lever/5.jpg'
     ],
-    videoUrl: 'https://www.youtube.com/embed/Bwsz7DiOdEo'
+    videoUrl: 'https://www.youtube.com/embed/Bqsggj5g4Ek'
   },
   {
     id: '21',
@@ -650,7 +650,7 @@ export const exercises: Exercise[] = [
       '/exercicios/flexao-declinada/4.jpg',
       '/exercicios/flexao-declinada/5.jpg'
     ],
-    videoUrl: 'https://www.youtube.com/embed/SKPab2YC3Ek'
+    videoUrl: 'https://www.youtube.com/embed/WcNNEHJGb-w'
   },
   {
     id: '22',
@@ -679,7 +679,7 @@ export const exercises: Exercise[] = [
       '/exercicios/curl-nordico/4.jpg',
       '/exercicios/curl-nordico/5.jpg'
     ],
-    videoUrl: 'https://www.youtube.com/embed/9YjIA-8H3c8'
+    videoUrl: 'https://www.youtube.com/embed/l5rTX5l5FoY'
   },
   {
     id: '23',
@@ -708,7 +708,7 @@ export const exercises: Exercise[] = [
       '/exercicios/skin-the-cat/4.jpg',
       '/exercicios/skin-the-cat/5.jpg'
     ],
-    videoUrl: 'https://www.youtube.com/embed/RjhN0caPZg4'
+    videoUrl: 'https://www.youtube.com/embed/zzJv8zDYVR0'
   },
   {
     id: '24',
@@ -766,7 +766,7 @@ export const exercises: Exercise[] = [
       '/exercicios/bandeira-humana/4.jpg',
       '/exercicios/bandeira-humana/5.jpg'
     ],
-    videoUrl: 'https://www.youtube.com/embed/Fy5zqB85Few'
+    videoUrl: 'https://www.youtube.com/embed/qZIJvJmMFJo'
   },
   {
     id: '26',
@@ -795,7 +795,7 @@ export const exercises: Exercise[] = [
       '/exercicios/handstand-parede/4.jpg',
       '/exercicios/handstand-parede/5.jpg'
     ],
-    videoUrl: 'https://www.youtube.com/embed/thr3sKLyLbY'
+    videoUrl: 'https://www.youtube.com/embed/6JJWRWLVUkI'
   },
   {
     id: '27',
@@ -853,7 +853,7 @@ export const exercises: Exercise[] = [
       '/exercicios/barra-typewriter/4.jpg',
       '/exercicios/barra-typewriter/5.jpg'
     ],
-    videoUrl: 'https://www.youtube.com/embed/mKzLkWG-eNQ'
+    videoUrl: 'https://www.youtube.com/embed/Bqsggj5g4Ek'
   },
   {
     id: '29',
@@ -882,7 +882,7 @@ export const exercises: Exercise[] = [
       '/exercicios/v-sit/4.jpg',
       '/exercicios/v-sit/5.jpg'
     ],
-    videoUrl: 'https://www.youtube.com/embed/UP0FNdTH5jA'
+    videoUrl: 'https://www.youtube.com/embed/IUZJNMjtLH4'
   },
   {
     id: '30',
@@ -911,6 +911,6 @@ export const exercises: Exercise[] = [
       '/exercicios/flexao-com-palma/4.jpg',
       '/exercicios/flexao-com-palma/5.jpg'
     ],
-    videoUrl: 'https://www.youtube.com/embed/ozD0ozRyfSo'
+    videoUrl: 'https://www.youtube.com/embed/qJ7ZMInSHLY'
   }
 ];
