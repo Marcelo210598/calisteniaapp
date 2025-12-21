@@ -72,7 +72,7 @@ export function CalIAChat() {
                     {
                         role: "assistant",
                         content: isApiKeyIssue
-                            ? "Oi! Sou a CalIA, sua assistente de calistenia. Para eu funcionar, adicione sua chave gratuita do Gemini no .env.local (veja o README para os passos)."
+                            ? "Desculpe, estou com problemas técnicos no momento. Por favor, tente novamente em instantes. Se o erro persistir, entre em contato com o suporte."
                             : "Desculpe, ocorreu um erro. Tente novamente em alguns instantes.",
                     },
                 ]);
