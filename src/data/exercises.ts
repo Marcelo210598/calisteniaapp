@@ -27,7 +27,8 @@ export const exercises: Exercise[] = [
       'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
       'https://images.unsplash.com/photo-1583248369069-9d91f1640fe6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
       'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
-    ]
+    ],
+    videoUrl: 'https://www.youtube.com/embed/IODxDxX7oi4'
   },
   {
     id: '2',
@@ -55,7 +56,8 @@ export const exercises: Exercise[] = [
       'https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
       'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
       'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
-    ]
+    ],
+    videoUrl: 'https://www.youtube.com/embed/eGo4IYlbE5g'
   },
   {
     id: '3',
@@ -83,7 +85,8 @@ export const exercises: Exercise[] = [
       'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
       'https://images.unsplash.com/photo-1583248369069-9d91f1640fe6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
       'https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
-    ]
+    ],
+    videoUrl: 'https://www.youtube.com/embed/aclHkVaku9U'
   },
   {
     id: '4',
@@ -111,7 +114,8 @@ export const exercises: Exercise[] = [
       'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
       'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
       'https://images.unsplash.com/photo-1583248369069-9d91f1640fe6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
-    ]
+    ],
+    videoUrl: 'https://www.youtube.com/embed/t7Oj8-8Htyw'
   },
   {
     id: '5',
@@ -139,7 +143,8 @@ export const exercises: Exercise[] = [
       'https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
       'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
       'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
-    ]
+    ],
+    videoUrl: 'https://www.youtube.com/embed/2z8JmcrW-As'
   },
   {
     id: '6',
@@ -167,7 +172,8 @@ export const exercises: Exercise[] = [
       'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
       'https://images.unsplash.com/photo-1583248369069-9d91f1640fe6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
       'https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
-    ]
+    ],
+    videoUrl: 'https://www.youtube.com/embed/FWizDhYjGsc'
   },
   {
     id: '7',
@@ -195,7 +201,8 @@ export const exercises: Exercise[] = [
       'https://images.unsplash.com/photo-1583248369069-9d91f1640fe6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
       'https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
       'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
-    ]
+    ],
+    videoUrl: 'https://www.youtube.com/embed/wgkPA4Z9Wa4'
   },
   {
     id: '8',
@@ -223,7 +230,8 @@ export const exercises: Exercise[] = [
       'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
       'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
       'https://images.unsplash.com/photo-1583248369069-9d91f1640fe6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
-    ]
+    ],
+    videoUrl: 'https://www.youtube.com/embed/pvIjsG5Svck'
   },
   {
     id: '9',
@@ -251,7 +259,8 @@ export const exercises: Exercise[] = [
       'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
       'https://images.unsplash.com/photo-1583248369069-9d91f1640fe6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
       'https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
-    ]
+    ],
+    videoUrl: 'https://www.youtube.com/embed/tQhrk6WMcKw'
   },
   {
     id: '10',
@@ -279,7 +288,8 @@ export const exercises: Exercise[] = [
       'https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
       'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
       'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
-    ]
+    ],
+    videoUrl: 'https://www.youtube.com/embed/JZQA08SlJnM'
   },
   {
     id: '11',
@@ -307,7 +317,8 @@ export const exercises: Exercise[] = [
       '/exercicios/flexoes-diamante/3.jpg',
       '/exercicios/flexoes-diamante/4.jpg',
       '/exercicios/flexoes-diamante/5.jpg'
-    ]
+    ],
+    videoUrl: 'https://www.youtube.com/embed/J0DnG1_S92I'
   },
   {
     id: '12',
@@ -335,7 +346,8 @@ export const exercises: Exercise[] = [
       '/exercicios/remada-invertida/3.jpg',
       '/exercicios/remada-invertida/4.jpg',
       '/exercicios/remada-invertida/5.jpg'
-    ]
+    ],
+    videoUrl: 'https://www.youtube.com/embed/hXTc1mDnZCw'
   },
   {
     id: '13',
@@ -363,7 +375,8 @@ export const exercises: Exercise[] = [
       '/exercicios/afundo/3.jpg',
       '/exercicios/afundo/4.jpg',
       '/exercicios/afundo/5.jpg'
-    ]
+    ],
+    videoUrl: 'https://www.youtube.com/embed/QOVaHwm-Q6U'
   },
   {
     id: '14',
@@ -391,7 +404,8 @@ export const exercises: Exercise[] = [
       '/exercicios/inclinacao-planche/3.jpg',
       '/exercicios/inclinacao-planche/4.jpg',
       '/exercicios/inclinacao-planche/5.jpg'
-    ]
+    ],
+    videoUrl: 'https://www.youtube.com/embed/roFz5p7FEkY'
   },
   {
     id: '15',
@@ -419,7 +433,8 @@ export const exercises: Exercise[] = [
       '/exercicios/barra-archer/3.jpg',
       '/exercicios/barra-archer/4.jpg',
       '/exercicios/barra-archer/5.jpg'
-    ]
+    ],
+    videoUrl: 'https://www.youtube.com/embed/fO3dKSQayfg'
   },
   {
     id: '16',
@@ -447,7 +462,8 @@ export const exercises: Exercise[] = [
       '/exercicios/pike-push-up-elevado/3.jpg',
       '/exercicios/pike-push-up-elevado/4.jpg',
       '/exercicios/pike-push-up-elevado/5.jpg'
-    ]
+    ],
+    videoUrl: 'https://www.youtube.com/embed/x4YNi4nRboU'
   },
   {
     id: '17',
@@ -475,7 +491,8 @@ export const exercises: Exercise[] = [
       '/exercicios/panturrilha-em-pe/3.jpg',
       '/exercicios/panturrilha-em-pe/4.jpg',
       '/exercicios/panturrilha-em-pe/5.jpg'
-    ]
+    ],
+    videoUrl: 'https://www.youtube.com/embed/gwLzBJYoWlI'
   },
   {
     id: '18',
@@ -503,7 +520,8 @@ export const exercises: Exercise[] = [
       '/exercicios/dragon-flag/3.jpg',
       '/exercicios/dragon-flag/4.jpg',
       '/exercicios/dragon-flag/5.jpg'
-    ]
+    ],
+    videoUrl: 'https://www.youtube.com/embed/moyFIvRrS0s'
   },
   {
     id: '19',
@@ -531,7 +549,8 @@ export const exercises: Exercise[] = [
       '/exercicios/superman/3.jpg',
       '/exercicios/superman/4.jpg',
       '/exercicios/superman/5.jpg'
-    ]
+    ],
+    videoUrl: 'https://www.youtube.com/embed/z6PJMT2y8GQ'
   },
   {
     id: '20',
@@ -559,7 +578,8 @@ export const exercises: Exercise[] = [
       '/exercicios/front-lever/3.jpg',
       '/exercicios/front-lever/4.jpg',
       '/exercicios/front-lever/5.jpg'
-    ]
+    ],
+    videoUrl: 'https://www.youtube.com/embed/Bwsz7DiOdEo'
   },
   {
     id: '21',
@@ -587,7 +607,8 @@ export const exercises: Exercise[] = [
       '/exercicios/flexao-declinada/3.jpg',
       '/exercicios/flexao-declinada/4.jpg',
       '/exercicios/flexao-declinada/5.jpg'
-    ]
+    ],
+    videoUrl: 'https://www.youtube.com/embed/SKPab2YC3Ek'
   },
   {
     id: '22',
@@ -615,7 +636,8 @@ export const exercises: Exercise[] = [
       '/exercicios/curl-nordico/3.jpg',
       '/exercicios/curl-nordico/4.jpg',
       '/exercicios/curl-nordico/5.jpg'
-    ]
+    ],
+    videoUrl: 'https://www.youtube.com/embed/9YjIA-8H3c8'
   },
   {
     id: '23',
@@ -643,7 +665,8 @@ export const exercises: Exercise[] = [
       '/exercicios/skin-the-cat/3.jpg',
       '/exercicios/skin-the-cat/4.jpg',
       '/exercicios/skin-the-cat/5.jpg'
-    ]
+    ],
+    videoUrl: 'https://www.youtube.com/embed/RjhN0caPZg4'
   },
   {
     id: '24',
@@ -671,7 +694,8 @@ export const exercises: Exercise[] = [
       '/exercicios/hollow-body-hold/3.jpg',
       '/exercicios/hollow-body-hold/4.jpg',
       '/exercicios/hollow-body-hold/5.jpg'
-    ]
+    ],
+    videoUrl: 'https://www.youtube.com/embed/LlDNef_Ztsc'
   },
   {
     id: '25',
@@ -699,7 +723,8 @@ export const exercises: Exercise[] = [
       '/exercicios/bandeira-humana/3.jpg',
       '/exercicios/bandeira-humana/4.jpg',
       '/exercicios/bandeira-humana/5.jpg'
-    ]
+    ],
+    videoUrl: 'https://www.youtube.com/embed/Fy5zqB85Few'
   },
   {
     id: '26',
@@ -727,7 +752,8 @@ export const exercises: Exercise[] = [
       '/exercicios/handstand-parede/3.jpg',
       '/exercicios/handstand-parede/4.jpg',
       '/exercicios/handstand-parede/5.jpg'
-    ]
+    ],
+    videoUrl: 'https://www.youtube.com/embed/thr3sKLyLbY'
   },
   {
     id: '27',
@@ -755,7 +781,8 @@ export const exercises: Exercise[] = [
       '/exercicios/agachamento-com-salto/3.jpg',
       '/exercicios/agachamento-com-salto/4.jpg',
       '/exercicios/agachamento-com-salto/5.jpg'
-    ]
+    ],
+    videoUrl: 'https://www.youtube.com/embed/A-cFYWvaHr0'
   },
   {
     id: '28',
@@ -783,7 +810,8 @@ export const exercises: Exercise[] = [
       '/exercicios/barra-typewriter/3.jpg',
       '/exercicios/barra-typewriter/4.jpg',
       '/exercicios/barra-typewriter/5.jpg'
-    ]
+    ],
+    videoUrl: 'https://www.youtube.com/embed/mKzLkWG-eNQ'
   },
   {
     id: '29',
@@ -811,7 +839,8 @@ export const exercises: Exercise[] = [
       '/exercicios/v-sit/3.jpg',
       '/exercicios/v-sit/4.jpg',
       '/exercicios/v-sit/5.jpg'
-    ]
+    ],
+    videoUrl: 'https://www.youtube.com/embed/UP0FNdTH5jA'
   },
   {
     id: '30',
@@ -839,6 +868,7 @@ export const exercises: Exercise[] = [
       '/exercicios/flexao-com-palma/3.jpg',
       '/exercicios/flexao-com-palma/4.jpg',
       '/exercicios/flexao-com-palma/5.jpg'
-    ]
+    ],
+    videoUrl: 'https://www.youtube.com/embed/ozD0ozRyfSo'
   }
 ];

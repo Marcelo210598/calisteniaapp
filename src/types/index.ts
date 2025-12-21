@@ -9,6 +9,7 @@ export interface Exercise {
   tips: string[];
   commonMistakes: string[];
   images: string[];
+  videoUrl?: string;
 }
 
 export interface Cycle {

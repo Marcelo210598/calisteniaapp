@@ -94,6 +94,26 @@ export default async function ExercisePage({ params }: ExercisePageProps) {
         </div>
       </section>
 
+      {/* Tutorial Video Section */}
+      {exercise.videoUrl && (
+        <section className="py-8 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-[#080357] dark:text-white mb-6 text-center">
+              Vídeo Tutorial
+            </h2>
+            <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+              <iframe
+                className="absolute top-0 left-0 w-full h-full rounded-lg shadow-2xl"
+                src={exercise.videoUrl}
+                title={`Tutorial: ${exercise.name}`}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Exercise Images Gallery */}
       <section className="mt-12 p-4">
         <h2 className="text-3xl font-bold text-[#080357] mb-8 text-center">Passo a Passo</h2>
