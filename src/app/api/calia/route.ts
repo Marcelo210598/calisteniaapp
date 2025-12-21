@@ -1,34 +1,30 @@
-import { GoogleGenerativeAI } from "@google/generative-ai";
 import { NextResponse } from "next/server";
-
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+import Groq from "groq-sdk";
 
 export async function POST(req: Request) {
-    try {
-        // Validate API key exists
-        const apiKey = process.env.GEMINI_API_KEY;
-        if (!apiKey) {
-            console.error("GEMINI_API_KEY não encontrada no .env.local");
-            return NextResponse.json(
-                { error: "Configuração da API ausente. Verifique o .env.local" },
-                { status: 500 }
-            );
-        }
+  try {
+    const apiKey = process.env.GROQ_API_KEY;
+    if (!apiKey) {
+      return NextResponse.json(
+        { error: "Chave da API Groq não encontrada" },
+        { status: 500 }
+      );
+    }
 
-        console.log("API Key presente:", apiKey.substring(0, 10) + "...");
+    const { message } = await req.json();
+    if (!message) {
+      return NextResponse.json(
+        { error: "Mensagem vazia" },
+        { status: 400 }
+      );
+    }
 
-        const { message } = await req.json();
+    const groq = new Groq({ apiKey });
 
-        if (!message || typeof message !== "string") {
-            return NextResponse.json(
-                { error: "Mensagem inválida" },
-                { status: 400 }
-            );
-        }
+    const systemPrompt = `Você é a CalIA, assistente especialista em calistenia do app CaliForce.
 
-        const systemPrompt = `Você é a CalIA, assistente especialista em calistenia do app CaliForce.
 Responda sempre em português brasileiro, de forma motivacional, prática e direta.
+
 Áreas de especialidade:
 - Exercícios de peso corporal (pull-ups, push-ups, muscle-ups, handstands, etc.)
 - Progressões e técnicas para iniciantes e avançados
@@ -39,20 +35,33 @@ Responda sempre em português brasileiro, de forma motivacional, prática e dire
 
 Use bullet points quando ajudar na clareza.
 Seja empático, incentivador e sempre encoraje o usuário a continuar treinando.
-Mantenha respostas concisas e práticas (máximo 200 palavras quando possível).
+Mantenha respostas concisas e práticas (máximo 200 palavras quando possível).`;
 
-Pergunta do usuário: ${message}`;
+    const completion = await groq.chat.completions.create({
+      messages: [
+        {
+          role: "system",
+          content: systemPrompt,
+        },
+        {
+          role: "user",
+          content: message,
+        },
+      ],
+      model: "llama-3.3-70b-versatile", // Modelo atualizado e ativo
+      temperature: 0.7,
+      max_tokens: 500,
+      top_p: 1,
+    });
 
-        const result = await model.generateContent(systemPrompt);
-        const response = await result.response;
-        const text = response.text();
+    const reply = completion.choices[0]?.message?.content || "Desculpe, não consegui processar sua mensagem.";
 
-        return NextResponse.json({ reply: text });
-    } catch (error) {
-        console.error("Erro na CalIA:", error);
-        return NextResponse.json(
-            { error: "Erro ao processar sua mensagem. Tente novamente." },
-            { status: 500 }
-        );
-    }
+    return NextResponse.json({ reply });
+  } catch (error: any) {
+    console.error("Erro CalIA:", error);
+    return NextResponse.json(
+      { error: "Erro ao processar mensagem: " + error.message },
+      { status: 500 }
+    );
+  }
 }
