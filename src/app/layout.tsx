@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import { Footer } from "@/components/Footer";
 import { PWAInstallPrompt } from "@/components/PWAInstallPrompt";
 import { CalIAChat } from "@/components/CalIAChat";
+import { Toaster } from "@/components/ui/sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -61,6 +62,7 @@ export default function RootLayout({
           </div>
           <PWAInstallPrompt />
           <CalIAChat />
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>
