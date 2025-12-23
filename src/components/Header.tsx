@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Sun, Moon, Dumbbell, Target, Menu, Home, Layers } from 'lucide-react';
+import { Sun, Moon, Dumbbell, Target, Menu, Home, Layers, Plus, Trophy, BookOpen } from 'lucide-react';
 import { useThemeStore } from '@/store/themeStore';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { useState } from 'react';
@@ -23,6 +23,24 @@ export function Header() {
         <Button variant="ghost" className={`text-[#080357] dark:text-white hover:text-[#FF9F1C] ${mobile ? 'w-full justify-start' : ''}`}>
           <Layers className="h-4 w-4 mr-2" />
           Ciclos
+        </Button>
+      </Link>
+      <Link href="/treino-personalizado" onClick={() => mobile && setIsOpen(false)}>
+        <Button variant="ghost" className={`text-[#080357] dark:text-white hover:text-[#FF9F1C] ${mobile ? 'w-full justify-start' : ''}`}>
+          <Plus className="h-4 w-4 mr-2" />
+          Montar Treino
+        </Button>
+      </Link>
+      <Link href="/meus-treinos" onClick={() => mobile && setIsOpen(false)}>
+        <Button variant="ghost" className={`text-[#080357] dark:text-white hover:text-[#FF9F1C] ${mobile ? 'w-full justify-start' : ''}`}>
+          <BookOpen className="h-4 w-4 mr-2" />
+          Meus Treinos
+        </Button>
+      </Link>
+      <Link href="/desafios" onClick={() => mobile && setIsOpen(false)}>
+        <Button variant="ghost" className={`text-[#080357] dark:text-white hover:text-[#FF9F1C] ${mobile ? 'w-full justify-start' : ''}`}>
+          <Trophy className="h-4 w-4 mr-2" />
+          Desafios
         </Button>
       </Link>
       <Link href="/progresso" onClick={() => mobile && setIsOpen(false)}>

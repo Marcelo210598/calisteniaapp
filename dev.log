@@ -1,0 +1,46 @@
+
+> califorce@0.1.0 dev
+> next dev
+
+⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of /Users/marcelodifoggiajunior/package-lock.json as the root directory.
+ To silence this warning, set `turbopack.root` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#root-directory for more information.
+ Detected additional lockfiles: 
+   * /Users/marcelodifoggiajunior/Desktop/Projetos AI/Projeto Calistenia Antigravity/calisteniaapp/package-lock.json
+
+▲ Next.js 16.1.0 (Turbopack, Cache Components)
+- Local:         http://localhost:3000
+- Network:       http://192.168.1.73:3000
+- Environments: .env.local
+- Experiments (use with caution):
+  ⨯ clientRouterFilter
+  · optimizePackageImports
+  ⨯ serverComponentsHmrCache
+
+✓ Starting...
+✓ Ready in 5.7s
+○ Compiling / ...
+ GET / 200 in 4.5s (compile: 4.0s, render: 464ms)
+ GET / 200 in 4.5s (compile: 4.0s, render: 453ms)
+ GET / 200 in 215ms (compile: 27ms, render: 188ms)
+Erro CalIA: Error: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent: [404 Not Found] models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+    at handleResponseNotOk (.next/dev/server/chunks/a7759_cab8d67c._.js:15048:11)
+    at async makeRequest (.next/dev/server/chunks/a7759_cab8d67c._.js:15020:9)
+    at async generateContent (.next/dev/server/chunks/a7759_cab8d67c._.js:15462:22)
+    at async POST (src/app/api/calia/route.ts:23:20)
+  21 |     Pergunta do usuário: ${message}`;
+  22 |
+> 23 |     const result = await model.generateContent(prompt);
+     |                    ^
+  24 |     const response = await result.response;
+  25 |     const text = response.text();
+  26 | {
+  status: 404,
+  statusText: 'Not Found',
+  errorDetails: undefined
+}
+ POST /api/calia 500 in 2.5s (compile: 1194ms, render: 1356ms)
+  Reload env: .env.local
+ GET / 200 in 329ms (compile: 128ms, render: 201ms)
+ GET / 200 in 144ms (compile: 39ms, render: 105ms)
