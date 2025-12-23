@@ -414,7 +414,8 @@ export default function TreinoPersonalizadoPage() {
                             <Card className="p-8 text-center">
                                 <p className="text-muted-foreground mb-2">Nenhum exercício adicionado</p>
                                 <p className="text-sm text-muted-foreground">
-                                    Adicione exercícios da lista {window.innerWidth < 1024 ? 'abaixo' : 'ao lado'}
+                                    <span className="lg:hidden">Adicione exercícios da lista abaixo</span>
+                                    <span className="hidden lg:inline">Adicione exercícios da lista ao lado</span>
                                 </p>
                             </Card>
                         ) : (
