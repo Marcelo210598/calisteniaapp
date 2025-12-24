@@ -60,13 +60,8 @@ function PremiumContent() {
             // Stripe Checkout moderna (2025): Redirecionamento via URL do servidor
             if (session.url) {
                 window.location.href = session.url;
-            } else if (session.sessionId) {
-                // Fallback apenas se necessário
-                const stripe = await stripePromise;
-                if (!stripe) throw new Error('Stripe falhou ao carregar');
-                await (stripe as any).redirectToCheckout({ sessionId: session.sessionId });
             } else {
-                throw new Error('Não foi possível iniciar o checkout');
+                throw new Error('Não foi possível iniciar o checkout - URL não retornada');
             }
         } catch (error: any) {
             console.error('Checkout error:', error);
