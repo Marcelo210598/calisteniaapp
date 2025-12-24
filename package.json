@@ -1,6 +1,6 @@
 {
   "name": "califorce",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -20,7 +20,7 @@
     "@radix-ui/react-slot": "^1.2.4",
     "@radix-ui/react-tabs": "^1.1.13",
     "@radix-ui/react-visually-hidden": "^1.2.4",
-    "@stripe/stripe-js": "^8.6.0",
+    "@stripe/stripe-js": "^4.0.0",
     "@vercel/analytics": "^1.6.1",
     "canvas-confetti": "^1.9.4",
     "class-variance-authority": "^0.7.1",

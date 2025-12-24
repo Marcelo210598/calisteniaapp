@@ -57,10 +57,16 @@ function PremiumContent() {
                 throw new Error(session.error);
             }
 
+            // Stripe Checkout moderna (2025): Redirecionamento via URL do servidor
             if (session.url) {
                 window.location.href = session.url;
+            } else if (session.sessionId) {
+                // Fallback apenas se necessário
+                const stripe = await stripePromise;
+                if (!stripe) throw new Error('Stripe falhou ao carregar');
+                await (stripe as any).redirectToCheckout({ sessionId: session.sessionId });
             } else {
-                throw new Error('URL de redirecionamento não encontrada');
+                throw new Error('Não foi possível iniciar o checkout');
             }
         } catch (error: any) {
             console.error('Checkout error:', error);
