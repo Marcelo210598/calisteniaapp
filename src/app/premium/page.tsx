@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { usePremiumStore } from '@/store/usePremiumStore';
 import { Check, Star, Lock } from 'lucide-react';
@@ -13,7 +13,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 // Initialize Stripe with the publishable key
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '');
 
-export default function PremiumPage() {
+function PremiumContent() {
     const { isPremium, upgrade } = usePremiumStore();
     const [loading, setLoading] = useState(false);
     const router = useRouter();
@@ -211,5 +211,13 @@ export default function PremiumPage() {
                 </div>
             </div>
         </div>
+    );
+}
+
+export default function PremiumPage() {
+    return (
+        <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Carregando...</div>}>
+            <PremiumContent />
+        </Suspense>
     );
 }
