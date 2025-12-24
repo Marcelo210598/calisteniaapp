@@ -63,6 +63,15 @@ export function Header() {
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center space-x-4">
           <NavItems />
+          <Link href="/premium">
+            <Button
+              variant="outline"
+              className="border-yellow-500 text-yellow-600 hover:bg-yellow-50 dark:text-yellow-400 dark:hover:bg-yellow-900/20"
+            >
+              <Trophy className="h-4 w-4 mr-2" />
+              Premium
+            </Button>
+          </Link>
           <Button
             variant="ghost"
             size="icon"

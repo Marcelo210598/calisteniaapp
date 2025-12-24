@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useChallengeStore } from '@/store/challengeStore';
+import { usePremiumStore } from '@/store/usePremiumStore';
 import { useWorkoutStore } from '@/store/workoutStore';
 import { exercises } from '@/data/exercises';
 import { Header } from '@/components/Header';
@@ -10,12 +11,13 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
-import { Calendar, Trophy, Flame, Target, Share2, Play, X, Copy, Check } from 'lucide-react';
+import { Calendar, Trophy, Flame, Target, Share2, Play, X, Copy, Check, Lock } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 export default function DesafiosPage() {
     const router = useRouter();
     const { challenges, activeChallenge, acceptChallenge, completeDay, abandonChallenge, isChallengeCompleted, getCurrentStreak } = useChallengeStore();
+    const { isPremium } = usePremiumStore();
     const { saveWorkout, startWorkout } = useWorkoutStore();
 
     const [selectedChallenge, setSelectedChallenge] = useState<string | null>(null);
@@ -282,40 +284,61 @@ export default function DesafiosPage() {
                 {/* Available Challenges */}
                 {!activeC && (
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {challenges.map((challenge) => (
-                            <Card
-                                key={challenge.id}
-                                className="p-6 hover:border-[#FF9F1C]/50 transition-colors cursor-pointer"
-                                onClick={() => setSelectedChallenge(challenge.id)}
-                            >
-                                <div className="text-5xl mb-4">{challenge.badge}</div>
-                                <h3 className="text-xl font-bold mb-2">{challenge.name}</h3>
-                                <p className="text-sm text-muted-foreground mb-4 line-clamp-3">
-                                    {challenge.description}
-                                </p>
+                        {challenges.map((challenge) => {
+                            const isLocked = !isPremium && ['desafio-beast-mode-45-dias', 'desafio-core-killer-14-dias'].includes(challenge.id);
 
-                                <div className="flex gap-2 mb-4">
-                                    <Badge variant="outline">
-                                        <Calendar className="w-3 h-3 mr-1" />
-                                        {challenge.duration} dias
-                                    </Badge>
-                                    <Badge variant="outline">
-                                        {challenge.exercises.length} exercícios
-                                    </Badge>
-                                </div>
-
-                                <Button
-                                    onClick={(e) => {
-                                        e.stopPropagation();
-                                        setSelectedChallenge(challenge.id);
-                                    }}
-                                    className="w-full"
-                                    variant="outline"
+                            return (
+                                <Card
+                                    key={challenge.id}
+                                    className={`p-6 transition-colors border-2 ${isLocked ? 'opacity-80' : 'hover:border-[#FF9F1C]/50 cursor-pointer'}`}
+                                    onClick={() => !isLocked && setSelectedChallenge(challenge.id)}
                                 >
-                                    Ver Detalhes
-                                </Button>
-                            </Card>
-                        ))}
+                                    <div className="flex justify-between items-start mb-4">
+                                        <div className="text-5xl">{challenge.badge}</div>
+                                        {isLocked && <div className="bg-gray-200 dark:bg-gray-800 p-2 rounded-full"><Lock className="w-5 h-5 text-gray-500" /></div>}
+                                    </div>
+                                    <h3 className="text-xl font-bold mb-2 flex items-center gap-2">
+                                        {challenge.name}
+                                        {isLocked && <span className="text-xs bg-yellow-500 text-white px-2 py-0.5 rounded-full">PREMIUM</span>}
+                                    </h3>
+                                    <p className="text-sm text-muted-foreground mb-4 line-clamp-3">
+                                        {challenge.description}
+                                    </p>
+
+                                    <div className="flex gap-2 mb-4">
+                                        <Badge variant="outline">
+                                            <Calendar className="w-3 h-3 mr-1" />
+                                            {challenge.duration} dias
+                                        </Badge>
+                                        <Badge variant="outline">
+                                            {challenge.exercises.length} exercícios
+                                        </Badge>
+                                    </div>
+
+                                    <Button
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            if (isLocked) {
+                                                router.push('/premium');
+                                            } else {
+                                                setSelectedChallenge(challenge.id);
+                                            }
+                                        }}
+                                        className="w-full"
+                                        variant={isLocked ? 'secondary' : 'outline'}
+                                    >
+                                        {isLocked ? (
+                                            <>
+                                                <Lock className="w-4 h-4 mr-2" />
+                                                Desbloquear Premium
+                                            </>
+                                        ) : (
+                                            'Ver Detalhes'
+                                        )}
+                                    </Button>
+                                </Card>
+                            );
+                        })}
                     </div>
                 )}
 
