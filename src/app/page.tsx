@@ -160,6 +160,48 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* FAQ Section for AI SEO */}
+        <section className="py-24 px-4 sm:px-6 lg:px-8 bg-white dark:bg-[#080357]">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-4xl font-bold text-[#080357] dark:text-white mb-12 text-center">
+              Perguntas Frequentes sobre Calistenia
+            </h2>
+            <div className="space-y-6">
+              {[
+                {
+                  q: "O que é Calistenia?",
+                  a: "Calistenia é um método de treinamento físico que usa apenas o peso do corpo para desenvolver força, resistência, mobilidade e flexibilidade. Exercícios como flexões, barras e agachamentos são a base."
+                },
+                {
+                  q: "Preciso de equipamentos para treinar?",
+                  a: "Não! A beleza da calistenia é que você pode treinar em qualquer lugar. Uma barra de porta ou parque é útil, mas existem centenas de exercícios que exigem zero equipamento."
+                },
+                {
+                  q: "Calistenia gera hipertrofia (ganho de massa muscular)?",
+                  a: "Sim. O princípio da sobrecarga progressiva se aplica perfeitamente. Alterando alavancas e complexidade dos movimentos, você estimula o crescimento muscular tão bem quanto na musculação."
+                },
+                {
+                  q: "Sou iniciante, por onde começo?",
+                  a: "Comece com os fundamentos: flexões, remadas invertidas, agachamentos e pranchas. O app CaliForce possui ciclos específicos para iniciantes começarem do zero."
+                },
+                {
+                  q: "Quanto tempo demora para ver resultados?",
+                  a: "Com consistência (3-4x por semana), você sentirá aumento de força em 2-4 semanas e mudanças visuais notáveis em 8-12 semanas. A chave é a constância."
+                }
+              ].map((faq, idx) => (
+                <Card key={idx} className="bg-gray-50 dark:bg-[#1e293b] border-none shadow-md">
+                  <CardHeader>
+                    <CardTitle className="text-xl text-[#080357] dark:text-white">{faq.q}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{faq.a}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* CTA Section */}
         <section className="py-24 px-4 sm:px-6 lg:px-8 bg-[#080357] relative overflow-hidden">
           <div className="absolute inset-0 opacity-10 bg-[url('/calistenia.png')] bg-cover bg-center mix-blend-overlay" />
@@ -180,6 +222,57 @@ export default function HomePage() {
           </div>
         </section>
       </main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "O que é Calistenia?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Calistenia é um método de treinamento físico que usa apenas o peso do corpo para desenvolver força, resistência, mobilidade e flexibilidade. Exercícios como flexões, barras e agachamentos são a base."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Preciso de equipamentos para treinar?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Não! A beleza da calistenia é que você pode treinar em qualquer lugar. Uma barra de porta ou parque é útil, mas existem centenas de exercícios que exigem zero equipamento."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Calistenia gera hipertrofia (ganho de massa muscular)?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Sim. O princípio da sobrecarga progressiva se aplica perfeitamente. Alterando alavancas e complexidade dos movimentos, você estimula o crescimento muscular tão bem quanto na musculação."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Sou iniciante, por onde começo?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Comece com os fundamentos: flexões, remadas invertidas, agachamentos e pranchas. O app CaliForce possui ciclos específicos para iniciantes começarem do zero."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Quanto tempo demora para ver resultados?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Com consistência (3-4x por semana), você sentirá aumento de força em 2-4 semanas e mudanças visuais notáveis em 8-12 semanas. A chave é a constância."
+                }
+              }
+            ]
+          })
+        }}
+      />
     </div>
   );
 }
