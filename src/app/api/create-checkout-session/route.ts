@@ -1,12 +1,18 @@
 import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-    typescript: true,
-});
+
 
 export async function POST(req: Request) {
     try {
+        if (!process.env.STRIPE_SECRET_KEY) {
+            throw new Error('STRIPE_SECRET_KEY não definida nas variáveis de ambiente');
+        }
+
+        const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
+            typescript: true,
+        });
+
         const body = await req.json();
         const { priceId, mode } = body; // mode should be 'subscription'
 
