@@ -7,6 +7,7 @@ import { PWAInstallPrompt } from "@/components/PWAInstallPrompt";
 import { CalIAChat } from "@/components/CalIAChat";
 import { Toaster } from "@/components/ui/sonner";
 import { Analytics } from "@vercel/analytics/react";
+import SessionProvider from "@/components/SessionProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -120,16 +121,18 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ThemeProvider>
-          <div className="flex flex-col min-h-screen">
-            {children}
-            <Footer />
-          </div>
-          <PWAInstallPrompt />
-          <CalIAChat />
-          <Toaster />
-          <Analytics />
-        </ThemeProvider>
+        <SessionProvider>
+          <ThemeProvider>
+            <div className="flex flex-col min-h-screen">
+              {children}
+              <Footer />
+            </div>
+            <PWAInstallPrompt />
+            <CalIAChat />
+            <Toaster />
+            <Analytics />
+          </ThemeProvider>
+        </SessionProvider>
       </body>
     </html>
   );
