@@ -10,8 +10,9 @@ let prisma: PrismaClient
 
 if (process.env.DATABASE_URL) {
     const pool = new Pool({ connectionString: process.env.DATABASE_URL })
-    const adapter = new PrismaNeon(pool)
-    prisma = globalForPrisma.prisma ?? new PrismaClient({ adapter })
+    // @ts-ignore - Type mismatch between @prisma/adapter-neon and @neondatabase/serverless
+    const adapter = new PrismaNeon(pool) as any
+    prisma = globalForPrisma.prisma ?? new PrismaClient({ adapter } as any)
 } else {
     // Fallback for development without DATABASE_URL
     prisma = globalForPrisma.prisma ?? new PrismaClient()
