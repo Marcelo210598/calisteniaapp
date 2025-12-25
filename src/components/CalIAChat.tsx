@@ -6,6 +6,7 @@ import { usePremiumStore } from "@/store/usePremiumStore";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { showPremiumToast } from "@/components/PremiumToast";
+import { canSendMessage, incrementMessageCount, getRemainingMessages } from "@/lib/caliaLimits";
 import {
     Sheet,
     SheetContent,
@@ -51,39 +52,26 @@ export function CalIAChat() {
     const { isPremium } = usePremiumStore();
     const router = useRouter();
 
-    const checkLimit = () => {
-        if (isPremium) return true;
-
-        const today = new Date().toDateString();
-        const usage = JSON.parse(localStorage.getItem('calia_usage') || '{}');
-
-        if (usage.date !== today) {
-            usage.date = today;
-            usage.count = 0;
-        }
-
-        if (usage.count >= 20) {
-            return false;
-        }
-
-        usage.count += 1;
-        localStorage.setItem('calia_usage', JSON.stringify(usage));
-        return true;
-    };
-
     const handleSend = async () => {
         if (!input.trim() || isLoading) return;
 
-        if (!checkLimit()) {
-            showPremiumToast("Você atingiu o limite diário da CalIA. Desbloqueie o Premium para mensagens ilimitadas!");
+        // Check message limit for non-premium users
+        if (!isPremium && !canSendMessage()) {
+            const remaining = getRemainingMessages();
+            showPremiumToast("Limite de 20 mensagens/dia atingido. Faça login ou assine Premium para mensagens ilimitadas!");
             setMessages((prev) => [
                 ...prev,
                 {
                     role: "assistant",
-                    content: "🔒 Você atingiu seu limite de 20 mensagens gratuitas por dia. Assine o Premium para conversar ilimitado comigo! 💪",
+                    content: "🔒 Você atingiu seu limite de 20 mensagens gratuitas por dia. Faça login ou assine o Premium para conversar ilimitado comigo! 💪",
                 },
             ]);
             return;
+        }
+
+        // Increment message count for non-premium users
+        if (!isPremium) {
+            incrementMessageCount();
         }
 
         const userMessage = input.trim();

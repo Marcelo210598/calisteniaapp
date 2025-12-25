@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { useSession } from 'next-auth/react';
 import { exercises } from '@/data/exercises';
 import { useWorkoutStore } from '@/store/workoutStore';
 import { Button } from '@/components/ui/button';
@@ -14,6 +15,7 @@ import confetti from 'canvas-confetti';
 
 export default function IniciarTreinoPage() {
     const router = useRouter();
+    const { data: session } = useSession();
     const { customWorkouts, activeWorkout, startWorkout, completeSet, nextExercise, finishWorkout } = useWorkoutStore();
 
     const [restTimer, setRestTimer] = useState(0);
@@ -154,6 +156,20 @@ export default function IniciarTreinoPage() {
                 onClick: () => window.open('https://www.instagram.com/califorce_oficial/', '_blank')
             }
         });
+
+        // Prompt anonymous users to login to save progress
+        if (!session) {
+            setTimeout(() => {
+                toast.info('💾 Salve seu progresso!', {
+                    description: 'Faça login para salvar seu progresso no cloud e acompanhar sua evolução',
+                    duration: 10000,
+                    action: {
+                        label: 'Fazer Login',
+                        onClick: () => router.push('/login')
+                    }
+                });
+            }, 3000);
+        }
 
         // Confetti celebration!
         const duration = 3000;

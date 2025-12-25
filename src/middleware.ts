@@ -6,7 +6,6 @@ import { getToken } from 'next-auth/jwt'
 const protectedRoutes = [
     '/meus-treinos',
     '/progresso',
-    '/treino-personalizado',
 ]
 
 export async function middleware(request: NextRequest) {
@@ -35,6 +34,5 @@ export const config = {
     matcher: [
         '/meus-treinos/:path*',
         '/progresso/:path*',
-        '/treino-personalizado/:path*',
     ],
 }
