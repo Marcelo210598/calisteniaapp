@@ -2,8 +2,9 @@
 
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Sun, Moon, Dumbbell, Target, Menu, Home, Layers, Plus, Trophy, BookOpen, LogOut, User as UserIcon } from 'lucide-react';
+import { Sun, Moon, Dumbbell, Target, Menu, Home, Layers, Plus, Trophy, BookOpen, LogOut, User as UserIcon, MessageCircle } from 'lucide-react';
 import { useThemeStore } from '@/store/themeStore';
+import InstagramButton from '@/components/InstagramButton';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { useState } from 'react';
 import { useSession, signOut } from 'next-auth/react';
@@ -67,6 +68,12 @@ export function Header() {
           Progresso
         </Button>
       </Link>
+      <Link href="/contato" onClick={() => mobile && setIsOpen(false)}>
+        <Button variant="ghost" className={`text-[#080357] dark:text-white hover:text-[#FF9F1C] ${mobile ? 'w-full justify-start' : ''}`}>
+          <MessageCircle className="h-4 w-4 mr-2" />
+          Contato
+        </Button>
+      </Link>
       {mobile && (
         <Link href="/premium" onClick={() => setIsOpen(false)}>
           <Button
@@ -101,6 +108,7 @@ export function Header() {
               Premium
             </Button>
           </Link>
+          <InstagramButton variant="compact" />
           <Button
             variant="ghost"
             size="icon"

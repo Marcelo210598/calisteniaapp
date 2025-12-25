@@ -145,6 +145,16 @@ export default function IniciarTreinoPage() {
             navigator.vibrate([200, 100, 200, 100, 200]);
         }
 
+        // Show motivational Instagram toast
+        toast.success('Treino concluído, monstro! 💪', {
+            description: 'Marca @califorce_oficial no seu story e inspire a comunidade!',
+            duration: 8000,
+            action: {
+                label: 'Abrir Instagram',
+                onClick: () => window.open('https://www.instagram.com/califorce_oficial/', '_blank')
+            }
+        });
+
         // Confetti celebration!
         const duration = 3000;
         const animationEnd = Date.now() + duration;
