@@ -13,6 +13,8 @@ import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { Calendar, Trophy, Flame, Target, Share2, Play, X, Copy, Check, Lock } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { showPremiumToast } from '@/components/PremiumToast';
+import { toast } from 'sonner';
 
 export default function DesafiosPage() {
     const router = useRouter();
@@ -65,8 +67,18 @@ export default function DesafiosPage() {
     }, [isCompleted, showCompletionScreen]);
 
     const handleAcceptChallenge = (challengeId: string) => {
+        const challenge = challenges.find(c => c.id === challengeId);
+
+        // Check if challenge is premium and user is not premium
+        if (challenge?.isPremium && !isPremium) {
+            showPremiumToast('Desafio exclusivo Premium. Desbloqueie para aceitar este desafio!');
+            setSelectedChallenge(null);
+            return;
+        }
+
         acceptChallenge(challengeId);
         setSelectedChallenge(null);
+        toast.success('Desafio aceito! Vamos começar! 💪');
     };
 
     const handleCompleteTodayWorkout = () => {
@@ -285,7 +297,7 @@ export default function DesafiosPage() {
                 {!activeC && (
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {challenges.map((challenge) => {
-                            const isLocked = !isPremium && ['desafio-beast-mode-45-dias', 'desafio-core-killer-14-dias'].includes(challenge.id);
+                            const isLocked = !isPremium && challenge.isPremium;
 
                             return (
                                 <Card

@@ -195,16 +195,16 @@ function PremiumContent() {
                     <div className="space-y-4">
                         <div className="grid grid-cols-3 gap-4 items-center">
                             <div className="text-left">Consultas CalIA</div>
-                            <div className="text-muted-foreground">3 / dia</div>
+                            <div className="text-muted-foreground">20 / dia</div>
                             <div className="text-green-500 font-bold">Ilimitado</div>
                         </div>
                         <div className="grid grid-cols-3 gap-4 items-center">
-                            <div className="text-left">Treinos Avançados</div>
-                            <div className="flex justify-center"><Lock className="w-4 h-4 text-muted-foreground" /></div>
-                            <div className="text-green-500 font-bold"><Check className="w-5 h-5 inline" /></div>
+                            <div className="text-left">Exercícios por Treino</div>
+                            <div className="text-muted-foreground">Máx. 6</div>
+                            <div className="text-green-500 font-bold">Ilimitado</div>
                         </div>
                         <div className="grid grid-cols-3 gap-4 items-center">
-                            <div className="text-left">Download de Treinos</div>
+                            <div className="text-left">Desafios Premium</div>
                             <div className="flex justify-center"><Lock className="w-4 h-4 text-muted-foreground" /></div>
                             <div className="text-green-500 font-bold"><Check className="w-5 h-5 inline" /></div>
                         </div>

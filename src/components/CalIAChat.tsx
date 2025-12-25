@@ -5,6 +5,7 @@ import { MessageCircle, Send, X, Loader2 } from "lucide-react";
 import { usePremiumStore } from "@/store/usePremiumStore";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { showPremiumToast } from "@/components/PremiumToast";
 import {
     Sheet,
     SheetContent,
@@ -61,7 +62,7 @@ export function CalIAChat() {
             usage.count = 0;
         }
 
-        if (usage.count >= 3) {
+        if (usage.count >= 20) {
             return false;
         }
 
@@ -74,18 +75,12 @@ export function CalIAChat() {
         if (!input.trim() || isLoading) return;
 
         if (!checkLimit()) {
-            toast.error("Limite diário atingido! Assine o Premium para continuar.", {
-                action: {
-                    label: "Virar Premium",
-                    onClick: () => router.push('/premium')
-                },
-                duration: 5000,
-            });
+            showPremiumToast("Você atingiu o limite diário da CalIA. Desbloqueie o Premium para mensagens ilimitadas!");
             setMessages((prev) => [
                 ...prev,
                 {
                     role: "assistant",
-                    content: "🔒 Você atingiu seu limite de mensagens gratuitas por hoje. **[Clique aqui](/premium)** para assinar o Premium e falar ilimitado comigo! 💪",
+                    content: "🔒 Você atingiu seu limite de 20 mensagens gratuitas por dia. Assine o Premium para conversar ilimitado comigo! 💪",
                 },
             ]);
             return;

@@ -4,7 +4,9 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { exercises } from '@/data/exercises';
 import { useWorkoutStore, WorkoutExercise } from '@/store/workoutStore';
+import { usePremiumStore } from '@/store/usePremiumStore';
 import { Header } from '@/components/Header';
+import { showPremiumToast } from '@/components/PremiumToast';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
@@ -167,6 +169,8 @@ export default function TreinoPersonalizadoPage() {
     const [editingWorkoutId, setEditingWorkoutId] = useState<string | null>(null);
     const [showScrollTop, setShowScrollTop] = useState(false);
 
+    const { isPremium } = usePremiumStore();
+
     const {
         currentWorkout,
         customWorkouts,
@@ -226,6 +230,12 @@ export default function TreinoPersonalizadoPage() {
     };
 
     const handleAddExercise = (exerciseId: string) => {
+        // Check if free user is trying to add 7th exercise
+        if (!isPremium && currentWorkout.length >= 6) {
+            showPremiumToast('Limite de 6 exercícios no free. Desbloqueie o Premium para treinos ilimitados!');
+            return;
+        }
+
         addExerciseToBuilder(exerciseId);
         const exercise = exercises.find(e => e.id === exerciseId);
         toast.success(`${exercise?.name} adicionado!`, {

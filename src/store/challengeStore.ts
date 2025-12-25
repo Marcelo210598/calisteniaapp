@@ -16,6 +16,7 @@ export interface Challenge {
     dailyGoal: string;
     badge: string;
     shareMessage: string;
+    isPremium: boolean;
 }
 
 export interface ActiveChallenge {
@@ -52,6 +53,7 @@ const PREDEFINED_CHALLENGES: Challenge[] = [
         dailyGoal: 'Complete todos os exercícios com boa forma',
         badge: '🏆',
         shareMessage: 'Completei o Desafio 28 Dias Iniciante do CaliForce! 💪 Treinei todo dia com o melhor app de calistenia brasileiro. Baixe você também: https://califorce.vercel.app/ #CaliForce #CalisteniaBrasil #Desafio28Dias',
+        isPremium: false,
     },
     {
         id: 'desafio-full-body-30-dias',
@@ -69,6 +71,7 @@ const PREDEFINED_CHALLENGES: Challenge[] = [
         dailyGoal: 'Treino completo sem pular nenhum exercício',
         badge: '🔥',
         shareMessage: 'Completei o Desafio Full Body 30 Dias do CaliForce! 🔥 30 dias de treino intenso de corpo inteiro. Transforme seu corpo também: https://califorce.vercel.app/ #CaliForce #FullBody #CalisteniaBrasil',
+        isPremium: false,
     },
     {
         id: 'desafio-pull-up-mastery',
@@ -85,6 +88,7 @@ const PREDEFINED_CHALLENGES: Challenge[] = [
         dailyGoal: 'Foco total na técnica de puxar',
         badge: '💪',
         shareMessage: 'Completei o Desafio Pull-Up Mastery do CaliForce! 💪 21 dias dominando a barra fixa. Aceite o desafio: https://califorce.vercel.app/ #CaliForce #PullUp #BarraFixa',
+        isPremium: true,
     },
     {
         id: 'desafio-core-killer-14-dias',
@@ -100,6 +104,7 @@ const PREDEFINED_CHALLENGES: Challenge[] = [
         dailyGoal: 'Contraia o core ao máximo em cada exercício',
         badge: '⚡',
         shareMessage: 'Completei o Desafio Core Killer 14 Dias do CaliForce! ⚡ Core de aço conquistado. Fortaleça seu abdômen: https://califorce.vercel.app/ #CaliForce #CoreKiller #AbdomenDeAco',
+        isPremium: true,
     },
     {
         id: 'desafio-beast-mode-45-dias',
@@ -117,6 +122,7 @@ const PREDEFINED_CHALLENGES: Challenge[] = [
         dailyGoal: 'Supere seus limites todos os dias',
         badge: '👑',
         shareMessage: 'Completei o Desafio Beast Mode 45 Dias do CaliForce! 👑 45 dias de treino intenso e avançado. Vire uma fera: https://califorce.vercel.app/ #CaliForce #BeastMode #CalisteniaAvancada',
+        isPremium: true,
     },
 ];
 
