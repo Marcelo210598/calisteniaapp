@@ -9,6 +9,9 @@ import { Button } from '@/components/ui/button';
 import { ArrowLeft, Lock, Clock, Zap, Target, BookOpen, Lightbulb, Heart } from 'lucide-react';
 import { DirectCheckoutButton } from '@/components/DirectCheckoutButton';
 
+// Force dynamic rendering to avoid pre-render issues with session
+export const dynamic = 'force-dynamic';
+
 interface PageProps {
     params: Promise<{
         id: string;
