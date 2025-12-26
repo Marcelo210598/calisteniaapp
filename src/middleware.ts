@@ -2,10 +2,11 @@ import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 import { getToken } from 'next-auth/jwt'
 
-// Routes that require authentication
+// Only protect routes that MUST have authentication
+// Free users can access everything else
 const protectedRoutes = [
-    '/meus-treinos',
-    '/progresso',
+    '/api/workouts/save', // Only API routes that save to DB
+    '/api/progress/save',
 ]
 
 export async function middleware(request: NextRequest) {
@@ -22,17 +23,28 @@ export async function middleware(request: NextRequest) {
             })
 
             if (!token) {
+                // For API routes, return 401
+                if (pathname.startsWith('/api/')) {
+                    return NextResponse.json(
+                        { error: 'Authentication required' },
+                        { status: 401 }
+                    )
+                }
+
+                // For pages, redirect to login
                 const url = new URL('/login', request.url)
                 url.searchParams.set('callbackUrl', pathname)
                 return NextResponse.redirect(url)
             }
         } catch (error) {
             console.error('Middleware auth error:', error)
-            // If there's an error getting the token, redirect to login
-            const url = new URL('/login', request.url)
-            url.searchParams.set('callbackUrl', pathname)
-            url.searchParams.set('error', 'AuthError')
-            return NextResponse.redirect(url)
+
+            if (pathname.startsWith('/api/')) {
+                return NextResponse.json(
+                    { error: 'Authentication error' },
+                    { status: 401 }
+                )
+            }
         }
     }
 
@@ -41,7 +53,7 @@ export async function middleware(request: NextRequest) {
 
 export const config = {
     matcher: [
-        '/meus-treinos/:path*',
-        '/progresso/:path*',
+        '/api/workouts/:path*',
+        '/api/progress/:path*',
     ],
 }

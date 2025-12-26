@@ -56,43 +56,25 @@ export default function MeusTreinosPage() {
                     <p className="text-muted-foreground">
                         Gerencie seus treinos personalizados salvos
                     </p>
-                </div>
-
-                {/* Loading State */}
-                {status === 'loading' && (
-                    <Card className="p-12 text-center">
-                        <div className="max-w-md mx-auto">
-                            <div className="text-6xl mb-4">⏳</div>
-                            <h2 className="text-2xl font-bold mb-2">Carregando...</h2>
-                            <p className="text-muted-foreground">
-                                Verificando sua autenticação
-                            </p>
-                        </div>
-                    </Card>
-                )}
-
-                {/* Unauthenticated State */}
-                {status === 'unauthenticated' && (
-                    <Card className="p-12 text-center">
-                        <div className="max-w-md mx-auto">
-                            <div className="text-6xl mb-4">🔒</div>
-                            <h2 className="text-2xl font-bold mb-2">Login Necessário</h2>
-                            <p className="text-muted-foreground mb-6">
-                                Você precisa estar logado para acessar seus treinos salvos
+                    {status === 'unauthenticated' && customWorkouts.length > 0 && (
+                        <div className="mt-4 p-4 bg-blue-500/10 border border-blue-500/20 rounded-lg">
+                            <p className="text-sm text-blue-400">
+                                💡 <strong>Dica:</strong> Faça login para salvar seus treinos no cloud e acessar em qualquer dispositivo!
                             </p>
                             <Button
                                 onClick={() => router.push('/login?callbackUrl=/meus-treinos')}
-                                className="bg-[#FF9F1C] hover:bg-[#FF9F1C]/90 text-white"
-                                size="lg"
+                                variant="outline"
+                                size="sm"
+                                className="mt-2"
                             >
-                                Fazer Login
+                                Entrar
                             </Button>
                         </div>
-                    </Card>
-                )}
+                    )}
+                </div>
 
-                {/* Authenticated Content */}
-                {status === 'authenticated' && customWorkouts.length === 0 && (
+                {/* Show workouts for all users (localStorage or DB) */}
+                {customWorkouts.length === 0 ? (
                     <Card className="p-12 text-center">
                         <div className="max-w-md mx-auto">
                             <div className="text-6xl mb-4">💪</div>
@@ -109,9 +91,7 @@ export default function MeusTreinosPage() {
                             </Button>
                         </div>
                     </Card>
-                )}
-
-                {status === 'authenticated' && customWorkouts.length > 0 && (
+                ) : (
                     <div className="space-y-4">
                         {customWorkouts.map((workout) => {
                             const totalSets = workout.exercises.reduce((acc, ex) => acc + ex.sets, 0);

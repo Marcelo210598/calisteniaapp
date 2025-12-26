@@ -252,21 +252,18 @@ export default function TreinoPersonalizadoPage() {
     };
 
     const handleSaveWorkout = () => {
-        // Check if user is authenticated
+        // Soft login prompt for anonymous users
         if (status === 'unauthenticated') {
-            toast.error('Você precisa estar logado para salvar treinos', {
-                description: 'Faça login para continuar',
+            toast.info('💾 Salve seu progresso no cloud!', {
+                description: 'Faça login para acessar seus treinos em qualquer dispositivo',
+                duration: 6000,
                 action: {
-                    label: 'Fazer Login',
+                    label: 'Entrar',
                     onClick: () => router.push('/login?callbackUrl=/treino-personalizado')
                 }
             });
-            return;
-        }
-
-        if (status === 'loading') {
-            toast.info('Verificando autenticação...');
-            return;
+            // Still allow saving to localStorage for now
+            // We'll implement localStorage sync later
         }
 
         if (workoutName.trim() && currentWorkout.length > 0) {
@@ -275,9 +272,15 @@ export default function TreinoPersonalizadoPage() {
                 toast.success('Treino atualizado!');
             } else {
                 saveWorkout(workoutName);
-                toast.success('Treino salvo!', {
-                    description: `${currentWorkout.length} exercícios`,
-                });
+                if (status === 'authenticated') {
+                    toast.success('Treino salvo no cloud!', {
+                        description: `${currentWorkout.length} exercícios`,
+                    });
+                } else {
+                    toast.success('Treino salvo localmente!', {
+                        description: 'Faça login para salvar no cloud',
+                    });
+                }
             }
             setWorkoutName('');
             setShowSaveDialog(false);
