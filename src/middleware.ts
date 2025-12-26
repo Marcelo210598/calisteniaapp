@@ -15,14 +15,23 @@ export async function middleware(request: NextRequest) {
     const isProtectedRoute = protectedRoutes.some(route => pathname.startsWith(route))
 
     if (isProtectedRoute) {
-        const token = await getToken({
-            req: request,
-            secret: process.env.NEXTAUTH_SECRET,
-        })
+        try {
+            const token = await getToken({
+                req: request,
+                secret: process.env.NEXTAUTH_SECRET,
+            })
 
-        if (!token) {
+            if (!token) {
+                const url = new URL('/login', request.url)
+                url.searchParams.set('callbackUrl', pathname)
+                return NextResponse.redirect(url)
+            }
+        } catch (error) {
+            console.error('Middleware auth error:', error)
+            // If there's an error getting the token, redirect to login
             const url = new URL('/login', request.url)
             url.searchParams.set('callbackUrl', pathname)
+            url.searchParams.set('error', 'AuthError')
             return NextResponse.redirect(url)
         }
     }

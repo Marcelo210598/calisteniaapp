@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { useSession } from 'next-auth/react';
 import { exercises } from '@/data/exercises';
 import { useWorkoutStore, WorkoutExercise } from '@/store/workoutStore';
 import { usePremiumStore } from '@/store/usePremiumStore';
@@ -161,6 +162,7 @@ function SortableExercise({ exercise, sets, reps, onRemove, onUpdateSets, onUpda
 
 export default function TreinoPersonalizadoPage() {
     const router = useRouter();
+    const { data: session, status } = useSession();
     const [workoutName, setWorkoutName] = useState('');
     const [showSaveDialog, setShowSaveDialog] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
@@ -250,6 +252,23 @@ export default function TreinoPersonalizadoPage() {
     };
 
     const handleSaveWorkout = () => {
+        // Check if user is authenticated
+        if (status === 'unauthenticated') {
+            toast.error('Você precisa estar logado para salvar treinos', {
+                description: 'Faça login para continuar',
+                action: {
+                    label: 'Fazer Login',
+                    onClick: () => router.push('/login?callbackUrl=/treino-personalizado')
+                }
+            });
+            return;
+        }
+
+        if (status === 'loading') {
+            toast.info('Verificando autenticação...');
+            return;
+        }
+
         if (workoutName.trim() && currentWorkout.length > 0) {
             if (editingWorkoutId) {
                 updateWorkout(editingWorkoutId, workoutName);

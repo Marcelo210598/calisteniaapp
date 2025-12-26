@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { useSession } from 'next-auth/react';
 import { exercises } from '@/data/exercises';
 import { useWorkoutStore } from '@/store/workoutStore';
 import { Header } from '@/components/Header';
@@ -12,6 +13,7 @@ import { Trash2, Edit, Play, Calendar } from 'lucide-react';
 
 export default function MeusTreinosPage() {
     const router = useRouter();
+    const { data: session, status } = useSession();
     const { customWorkouts, loadWorkout, deleteWorkout, startWorkout } = useWorkoutStore();
     const [deletingId, setDeletingId] = useState<string | null>(null);
 
@@ -56,7 +58,41 @@ export default function MeusTreinosPage() {
                     </p>
                 </div>
 
-                {customWorkouts.length === 0 ? (
+                {/* Loading State */}
+                {status === 'loading' && (
+                    <Card className="p-12 text-center">
+                        <div className="max-w-md mx-auto">
+                            <div className="text-6xl mb-4">⏳</div>
+                            <h2 className="text-2xl font-bold mb-2">Carregando...</h2>
+                            <p className="text-muted-foreground">
+                                Verificando sua autenticação
+                            </p>
+                        </div>
+                    </Card>
+                )}
+
+                {/* Unauthenticated State */}
+                {status === 'unauthenticated' && (
+                    <Card className="p-12 text-center">
+                        <div className="max-w-md mx-auto">
+                            <div className="text-6xl mb-4">🔒</div>
+                            <h2 className="text-2xl font-bold mb-2">Login Necessário</h2>
+                            <p className="text-muted-foreground mb-6">
+                                Você precisa estar logado para acessar seus treinos salvos
+                            </p>
+                            <Button
+                                onClick={() => router.push('/login?callbackUrl=/meus-treinos')}
+                                className="bg-[#FF9F1C] hover:bg-[#FF9F1C]/90 text-white"
+                                size="lg"
+                            >
+                                Fazer Login
+                            </Button>
+                        </div>
+                    </Card>
+                )}
+
+                {/* Authenticated Content */}
+                {status === 'authenticated' && customWorkouts.length === 0 && (
                     <Card className="p-12 text-center">
                         <div className="max-w-md mx-auto">
                             <div className="text-6xl mb-4">💪</div>
@@ -73,7 +109,9 @@ export default function MeusTreinosPage() {
                             </Button>
                         </div>
                     </Card>
-                ) : (
+                )}
+
+                {status === 'authenticated' && customWorkouts.length > 0 && (
                     <div className="space-y-4">
                         {customWorkouts.map((workout) => {
                             const totalSets = workout.exercises.reduce((acc, ex) => acc + ex.sets, 0);

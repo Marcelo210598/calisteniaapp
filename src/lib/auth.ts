@@ -46,7 +46,8 @@ export const authOptions = {
         })
     ],
     session: {
-        strategy: "jwt" as const
+        strategy: "jwt" as const,
+        maxAge: 30 * 24 * 60 * 60, // 30 days
     },
     pages: {
         signIn: "/login",
@@ -70,4 +71,6 @@ export const authOptions = {
         }
     },
     secret: process.env.NEXTAUTH_SECRET,
+    trustHost: true, // Required for production deployment
+    debug: process.env.NODE_ENV === 'development',
 } satisfies NextAuthConfig
