@@ -1,7 +1,7 @@
 'use client';
 
-import { useState } from 'react';
-import { signIn } from 'next-auth/react';
+import { useState, useEffect } from 'react';
+import { signIn, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -12,11 +12,29 @@ import { Loader2 } from 'lucide-react';
 
 export default function LoginPage() {
     const router = useRouter();
+    const { data: session, update } = useSession();
     const [isLoading, setIsLoading] = useState(false);
+    const [callbackUrl, setCallbackUrl] = useState('/');
     const [formData, setFormData] = useState({
         email: '',
         password: '',
     });
+
+    // Get callback URL from query params on client side
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            const params = new URLSearchParams(window.location.search);
+            const url = params.get('callbackUrl') || '/';
+            setCallbackUrl(url);
+        }
+    }, []);
+
+    // If already logged in, redirect to callback URL
+    useEffect(() => {
+        if (session) {
+            router.push(callbackUrl);
+        }
+    }, [session, callbackUrl, router]);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -31,14 +49,21 @@ export default function LoginPage() {
 
             if (result?.error) {
                 toast.error(result.error);
-            } else {
+                setIsLoading(false);
+            } else if (result?.ok) {
                 toast.success('Login realizado com sucesso!');
-                router.push('/');
-                router.refresh();
+
+                // Force session update
+                await update();
+
+                // Small delay to ensure session is set
+                setTimeout(() => {
+                    router.push(callbackUrl);
+                    router.refresh();
+                }, 100);
             }
         } catch (error) {
             toast.error('Erro ao fazer login. Tente novamente.');
-        } finally {
             setIsLoading(false);
         }
     };
