@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Sun, Moon, Dumbbell, Target, Menu, Home, Layers, Plus, Trophy, BookOpen, LogOut, User as UserIcon, MessageCircle } from 'lucide-react';
+import { Sun, Moon, Dumbbell, Target, Menu, Home, Layers, Plus, Trophy, BookOpen, LogOut, User as UserIcon, MessageCircle, Zap } from 'lucide-react';
 import { useThemeStore } from '@/store/themeStore';
 import InstagramButton from '@/components/InstagramButton';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
@@ -48,6 +48,12 @@ export function Header() {
         <Button variant="ghost" className={`text-[#080357] dark:text-white hover:text-[#FF9F1C] ${mobile ? 'w-full justify-start' : ''}`}>
           <Plus className="h-4 w-4 mr-2" />
           Montar Treino
+        </Button>
+      </Link>
+      <Link href="/hit" onClick={() => mobile && setIsOpen(false)}>
+        <Button variant="ghost" className={`text-[#080357] dark:text-white hover:text-[#FF9F1C] ${mobile ? 'w-full justify-start' : ''}`}>
+          <Zap className="h-4 w-4 mr-2" />
+          Treinos HIT
         </Button>
       </Link>
       <Link href="/meus-treinos" onClick={() => mobile && setIsOpen(false)}>

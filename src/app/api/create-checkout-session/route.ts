@@ -32,8 +32,8 @@ export async function POST(req: Request) {
                 },
             ],
             mode: mode || 'subscription',
-            success_url: `http://localhost:3000/premium?success=true&session_id={CHECKOUT_SESSION_ID}`,
-            cancel_url: `http://localhost:3000/premium?canceled=true`,
+            success_url: `${origin}/premium-success?session_id={CHECKOUT_SESSION_ID}`,
+            cancel_url: `${origin}/premium?canceled=true`,
         });
 
         return NextResponse.json({ sessionId: session.id, url: session.url });

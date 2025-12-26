@@ -125,6 +125,111 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* HIT Training Section */}
+        <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[#080357] to-[#0a0560] relative overflow-hidden">
+          <div className="absolute inset-0 bg-[url('/background-hero.svg')] opacity-10" />
+          <div className="max-w-7xl mx-auto relative z-10">
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center gap-2 bg-[#FF9F1C]/20 text-[#FF9F1C] px-4 py-2 rounded-full mb-4">
+                <Zap className="h-5 w-5" />
+                <span className="font-semibold">NOVIDADE</span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                Treinos HIT
+              </h2>
+              <p className="text-xl text-white/90 max-w-2xl mx-auto">
+                Queime gordura e ganhe força em 15-35 minutos com nossos treinos de alta intensidade
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+              {/* Free HIT Preview */}
+              <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all group">
+                <CardHeader>
+                  <div className="flex items-center justify-between mb-2">
+                    <Badge className="bg-green-500 text-white">GRÁTIS</Badge>
+                    <Zap className="h-6 w-6 text-[#FF9F1C]" />
+                  </div>
+                  <CardTitle className="text-xl text-white">HIT Iniciante</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-white/80 mb-4">
+                    Treino completo de 20 minutos para queimar gordura e fortalecer o corpo todo
+                  </p>
+                  <div className="flex items-center gap-4 text-sm text-white/70 mb-4">
+                    <span>⏱️ 20 min</span>
+                    <span>🔥 5 exercícios</span>
+                  </div>
+                  <Link href="/hit">
+                    <Button className="w-full bg-[#FF9F1C] hover:bg-[#FF9F1C]/90 text-white">
+                      Começar Agora
+                    </Button>
+                  </Link>
+                </CardContent>
+              </Card>
+
+              {/* Premium HIT Preview 1 */}
+              <Card className="bg-white/10 backdrop-blur-sm border-yellow-500/50 hover:bg-white/15 transition-all group">
+                <CardHeader>
+                  <div className="flex items-center justify-between mb-2">
+                    <Badge className="bg-gradient-to-r from-yellow-500 to-orange-500 text-white">PREMIUM</Badge>
+                    <Zap className="h-6 w-6 text-yellow-400" />
+                  </div>
+                  <CardTitle className="text-xl text-white">HIT Beast Mode</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-white/80 mb-4">
+                    O treino mais brutal! Muscle-ups, pistol squats e muito mais
+                  </p>
+                  <div className="flex items-center gap-4 text-sm text-white/70 mb-4">
+                    <span>⏱️ 30 min</span>
+                    <span>🔥 5 exercícios</span>
+                  </div>
+                  <Link href="/hit">
+                    <Button variant="outline" className="w-full border-yellow-500 text-yellow-400 hover:bg-yellow-500/20">
+                      Ver Premium
+                    </Button>
+                  </Link>
+                </CardContent>
+              </Card>
+
+              {/* Premium HIT Preview 2 */}
+              <Card className="bg-white/10 backdrop-blur-sm border-yellow-500/50 hover:bg-white/15 transition-all group">
+                <CardHeader>
+                  <div className="flex items-center justify-between mb-2">
+                    <Badge className="bg-gradient-to-r from-yellow-500 to-orange-500 text-white">PREMIUM</Badge>
+                    <Zap className="h-6 w-6 text-yellow-400" />
+                  </div>
+                  <CardTitle className="text-xl text-white">HIT Front Lever Pro</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-white/80 mb-4">
+                    Desenvolva força isométrica extrema para o front lever
+                  </p>
+                  <div className="flex items-center gap-4 text-sm text-white/70 mb-4">
+                    <span>⏱️ 22 min</span>
+                    <span>🔥 5 exercícios</span>
+                  </div>
+                  <Link href="/hit">
+                    <Button variant="outline" className="w-full border-yellow-500 text-yellow-400 hover:bg-yellow-500/20">
+                      Ver Premium
+                    </Button>
+                  </Link>
+                </CardContent>
+              </Card>
+            </div>
+
+            <div className="text-center">
+              <Link href="/hit">
+                <Button size="lg" className="bg-[#FF9F1C] hover:bg-[#FF9F1C]/90 text-white px-8">
+                  Ver Todos os Treinos HIT
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </section>
+
         {/* Featured Exercises Section */}
         <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-[#0f172a]">
           <div className="max-w-7xl mx-auto">
