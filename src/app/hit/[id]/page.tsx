@@ -8,9 +8,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, Lock, Clock, Zap, Target, BookOpen, Lightbulb, Heart } from 'lucide-react';
 import { DirectCheckoutButton } from '@/components/DirectCheckoutButton';
-
-// Force dynamic rendering to avoid pre-render issues with session
-export const dynamic = 'force-dynamic';
+import { use } from 'react';
 
 interface PageProps {
     params: Promise<{
@@ -18,15 +16,15 @@ interface PageProps {
     }>;
 }
 
-export default async function HITWorkoutPage({ params }: PageProps) {
-    const { id } = await params;
+export default function HITWorkoutPage({ params }: PageProps) {
+    // Unwrap params using React.use()
+    const { id } = use(params);
     const workout = hitWorkouts.find(w => w.id === id);
 
     if (!workout) {
         notFound();
     }
 
-    // Return client component wrapper
     return <HITWorkoutClient workout={workout} />;
 }
 
