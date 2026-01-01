@@ -39,6 +39,7 @@ function PremiumContent() {
     }, [searchParams, upgrade, router]);
 
     const handleCheckout = async (priceId: string, planType: 'monthly' | 'yearly') => {
+        console.log('🎯 Frontend: Iniciando checkout com:', { priceId, planType });
         setLoading(true);
         try {
             const response = await fetch('/api/create-checkout-session', {
