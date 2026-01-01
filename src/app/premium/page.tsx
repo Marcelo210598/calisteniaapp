@@ -135,7 +135,7 @@ function PremiumContent() {
                     <CardFooter>
                         <Button
                             className="w-full bg-[#FF9F1C] hover:bg-[#FF9F1C]/90 text-white"
-                            onClick={() => handleCheckout('price_1ShyEvERWSAzlGMFU6BvegKg', 'monthly')}
+                            onClick={() => handleCheckout('price_1SknbCCrB6LMIWTsB65nD5sx', 'monthly')}
                             disabled={loading}
                         >
                             Assinar Mensal
@@ -175,7 +175,7 @@ function PremiumContent() {
                     <CardFooter>
                         <Button
                             className="w-full bg-[#FF9F1C] hover:bg-[#FF9F1C]/90 text-white"
-                            onClick={() => handleCheckout('price_1ShyfQERWSAzlGMFEueLRDSI', 'yearly')}
+                            onClick={() => handleCheckout('price_1SkniECrB6LMIWTsP2lII1TH', 'yearly')}
                             disabled={loading}
                         >
                             Assinar Anual
