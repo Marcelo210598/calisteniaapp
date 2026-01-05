@@ -35,16 +35,18 @@ export default function ExercisesPage() {
     }
   };
 
-  const filteredExercises = exercises.filter(exercise => {
-    const difficultyMatch = selectedDifficulty === 'all' || exercise.difficulty === selectedDifficulty;
-    const categoryMatch = selectedCategory === 'all' || exercise.category === selectedCategory;
-    return difficultyMatch && categoryMatch;
-  });
+  const filteredExercises = exercises
+    .filter(exercise => {
+      const difficultyMatch = selectedDifficulty === 'all' || exercise.difficulty === selectedDifficulty;
+      const categoryMatch = selectedCategory === 'all' || exercise.category === selectedCategory;
+      return difficultyMatch && categoryMatch;
+    })
+    .sort((a, b) => a.name.localeCompare(b.name, 'pt-BR'));
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#D6FFB7] via-[#F5FF90] to-[#FFC15E] dark:from-[#080357] dark:via-[#1e293b] dark:to-[#334155]">
       <Header />
-      
+
       {/* Page Header */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
@@ -55,7 +57,7 @@ export default function ExercisesPage() {
             </h1>
           </div>
           <p className="text-xl text-[#080357] dark:text-white max-w-3xl mx-auto">
-            Domine os movimentos fundamentais e avançados da calistenia. 
+            Domine os movimentos fundamentais e avançados da calistenia.
             Cada exercício vem com instruções detalhadas e dicas de execução.
           </p>
         </div>
@@ -69,7 +71,7 @@ export default function ExercisesPage() {
               <Filter className="h-5 w-5 text-[#FF9F1C]" />
               <span className="font-semibold text-[#080357] dark:text-white">Filtrar por:</span>
             </div>
-            
+
             <div className="flex flex-wrap gap-2">
               {difficulties.map((difficulty) => (
                 <Button
@@ -77,8 +79,8 @@ export default function ExercisesPage() {
                   variant={selectedDifficulty === difficulty ? "default" : "outline"}
                   size="sm"
                   onClick={() => setSelectedDifficulty(difficulty)}
-                  className={selectedDifficulty === difficulty 
-                    ? 'bg-[#FF9F1C] hover:bg-[#FFC15E] text-white' 
+                  className={selectedDifficulty === difficulty
+                    ? 'bg-[#FF9F1C] hover:bg-[#FFC15E] text-white'
                     : 'border-[#080357] text-[#080357] hover:bg-[#080357] hover:text-white'
                   }
                 >
@@ -86,7 +88,7 @@ export default function ExercisesPage() {
                 </Button>
               ))}
             </div>
-            
+
             <div className="flex flex-wrap gap-2">
               {categories.map((category) => (
                 <Button
@@ -94,8 +96,8 @@ export default function ExercisesPage() {
                   variant={selectedCategory === category ? "default" : "outline"}
                   size="sm"
                   onClick={() => setSelectedCategory(category)}
-                  className={selectedCategory === category 
-                    ? 'bg-[#FF9F1C] hover:bg-[#FFC15E] text-white' 
+                  className={selectedCategory === category
+                    ? 'bg-[#FF9F1C] hover:bg-[#FFC15E] text-white'
                     : 'border-[#080357] text-[#080357] hover:bg-[#080357] hover:text-white'
                   }
                 >
@@ -104,7 +106,7 @@ export default function ExercisesPage() {
               ))}
             </div>
           </div>
-          
+
           <div className="text-center mb-8">
             <Badge variant="secondary" className="text-lg px-4 py-2 bg-[#F5FF90] text-[#080357]">
               {filteredExercises.length} exercício(s) encontrado(s)
