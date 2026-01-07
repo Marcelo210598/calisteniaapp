@@ -59,12 +59,12 @@ export default function CyclesPage() {
       <section className="px-4 sm:px-6 lg:px-8 pb-16">
         <div className="max-w-7xl mx-auto">
           <Tabs defaultValue={cycles[0].id} className="w-full">
-            <TabsList className="grid w-full grid-cols-3 mb-8 bg-white/50 dark:bg-black/20 p-1 rounded-xl">
+            <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 mb-8 bg-white/50 dark:bg-black/20 p-1 rounded-xl gap-1">
               {cycles.map((cycle) => (
                 <TabsTrigger
                   key={cycle.id}
                   value={cycle.id}
-                  className="text-lg py-3 data-[state=active]:bg-[#FF9F1C] data-[state=active]:text-white rounded-lg transition-all"
+                  className="text-sm md:text-lg py-3 data-[state=active]:bg-[#FF9F1C] data-[state=active]:text-white rounded-lg transition-all"
                 >
                   {cycle.name.replace('CaliForce ', '')}
                 </TabsTrigger>
@@ -111,8 +111,8 @@ export default function CyclesPage() {
 
                                 return (
                                   <div key={index} className={`p-6 rounded-xl border transition-all ${isCompleted
-                                      ? 'bg-[#D6FFB7]/20 border-[#D6FFB7] dark:bg-[#D6FFB7]/10'
-                                      : 'bg-gray-50 dark:bg-gray-800 border-gray-100 dark:border-gray-700'
+                                    ? 'bg-[#D6FFB7]/20 border-[#D6FFB7] dark:bg-[#D6FFB7]/10'
+                                    : 'bg-gray-50 dark:bg-gray-800 border-gray-100 dark:border-gray-700'
                                     }`}>
                                     <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
                                       <div className="flex items-center gap-3">
