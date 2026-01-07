@@ -59,12 +59,13 @@ export default function CyclesPage() {
       <section className="px-4 sm:px-6 lg:px-8 pb-16">
         <div className="max-w-7xl mx-auto">
           <Tabs defaultValue={cycles[0].id} className="w-full">
-            <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 mb-8 bg-white/50 dark:bg-black/20 p-1 rounded-xl gap-1">
+            {/* Mobile: Horizontal scroll, Desktop: Grid */}
+            <TabsList className="w-full mb-8 bg-white/50 dark:bg-black/20 p-2 rounded-xl flex flex-row md:grid md:grid-cols-4 overflow-x-auto gap-2 scrollbar-hide">
               {cycles.map((cycle) => (
                 <TabsTrigger
                   key={cycle.id}
                   value={cycle.id}
-                  className="text-sm md:text-lg py-3 data-[state=active]:bg-[#FF9F1C] data-[state=active]:text-white rounded-lg transition-all"
+                  className="flex-shrink-0 min-w-[140px] md:min-w-0 text-sm md:text-base py-3 px-4 data-[state=active]:bg-[#FF9F1C] data-[state=active]:text-white rounded-lg transition-all whitespace-nowrap"
                 >
                   {cycle.name.replace('CaliForce ', '')}
                 </TabsTrigger>
