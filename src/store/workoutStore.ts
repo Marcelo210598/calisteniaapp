@@ -40,6 +40,10 @@ interface WorkoutState {
     loadWorkout: (workoutId: string) => void;
     deleteWorkout: (workoutId: string) => void;
 
+    // New methods for adding exercises directly to workouts
+    createWorkout: (name: string) => CustomWorkout;
+    addExerciseToWorkout: (workoutId: string, exercise: { exerciseId: string; sets: number; reps: string | number }) => void;
+
     // Active workout session
     startWorkout: (workoutId: string) => void;
     completeSet: (exerciseId: string) => void;
@@ -135,6 +139,45 @@ export const useWorkoutStore = create<WorkoutState>()(
             deleteWorkout: (workoutId) => set((state) => ({
                 customWorkouts: state.customWorkouts.filter(w => w.id !== workoutId),
             })),
+
+            createWorkout: (name) => {
+                const newWorkout: CustomWorkout = {
+                    id: Date.now().toString(),
+                    name,
+                    exercises: [],
+                    createdAt: new Date().toISOString(),
+                };
+
+                set((state) => ({
+                    customWorkouts: [...state.customWorkouts, newWorkout],
+                }));
+
+                return newWorkout;
+            },
+
+            addExerciseToWorkout: (workoutId, exercise) => set((state) => {
+                const workoutIndex = state.customWorkouts.findIndex(w => w.id === workoutId);
+                if (workoutIndex === -1) return state;
+
+                const updatedWorkouts = [...state.customWorkouts];
+                const currentExercises = updatedWorkouts[workoutIndex].exercises;
+
+                const newExercise: WorkoutExercise = {
+                    exerciseId: exercise.exerciseId,
+                    sets: exercise.sets,
+                    reps: typeof exercise.reps === 'number' ? exercise.reps : parseInt(exercise.reps) || 10,
+                    order: currentExercises.length,
+                };
+
+                updatedWorkouts[workoutIndex] = {
+                    ...updatedWorkouts[workoutIndex],
+                    exercises: [...currentExercises, newExercise],
+                };
+
+                return {
+                    customWorkouts: updatedWorkouts,
+                };
+            }),
 
             startWorkout: (workoutId) => set((state) => {
                 const workout = state.customWorkouts.find(w => w.id === workoutId);

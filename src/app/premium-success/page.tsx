@@ -59,7 +59,7 @@ export default function PremiumSuccessPage() {
                         Bem-vindo ao CaliForce Premium, monstro! 💪
                     </p>
                     <p className="text-lg text-white/80">
-                        Agora você tem acesso total a tudo que o CaliForce oferece!
+                        Tudo liberado: CalIA ilimitada, treinos sem limite, HIT avançados. Bora evoluir!
                     </p>
                 </div>
 
@@ -92,16 +92,16 @@ export default function PremiumSuccessPage() {
 
                 {/* CTA Buttons */}
                 <div className="flex flex-col sm:flex-row gap-4 justify-center animate-in fade-in slide-in-from-bottom-4 duration-700 delay-600">
-                    <Link href="/hit">
+                    <Link href="/meus-treinos">
                         <Button size="lg" className="bg-[#FF9F1C] hover:bg-[#FF9F1C]/90 text-white px-8 py-6 text-lg">
-                            <Zap className="mr-2 h-5 w-5" />
-                            Treinos HIT Premium
+                            <Dumbbell className="mr-2 h-5 w-5" />
+                            Ir para Treinos
                         </Button>
                     </Link>
-                    <Link href="/treino-personalizado">
+                    <Link href="/hit">
                         <Button size="lg" variant="outline" className="bg-white/10 hover:bg-white/20 text-white border-white/30 px-8 py-6 text-lg">
-                            <Dumbbell className="mr-2 h-5 w-5" />
-                            Montar Treino
+                            <Zap className="mr-2 h-5 w-5" />
+                            Treinos HIT
                         </Button>
                     </Link>
                 </div>

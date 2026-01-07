@@ -9,6 +9,8 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
 import { Metadata } from 'next';
+import { PlankTimer } from '@/components/PlankTimer';
+import { AddToWorkoutButton } from '@/components/AddToWorkoutButton';
 
 interface ExercisePageProps {
   params: Promise<{
@@ -170,6 +172,18 @@ export default async function ExercisePage({ params }: ExercisePageProps) {
                 </div>
               </section>
             )}
+
+            {/* Plank Timer - Only for Prancha exercise */}
+            {exercise.slug === 'prancha' && (
+              <section className="max-w-4xl mx-auto">
+                <PlankTimer />
+              </section>
+            )}
+
+            {/* Add to Workout Button */}
+            <section className="max-w-4xl mx-auto text-center">
+              <AddToWorkoutButton exerciseId={exercise.id} exerciseName={exercise.name} />
+            </section>
 
             {/* Exercise Details */}
             <section className="max-w-4xl mx-auto">

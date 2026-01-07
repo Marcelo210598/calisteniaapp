@@ -2,6 +2,142 @@ import { Cycle } from '@/types';
 
 export const cycles: Cycle[] = [
   {
+    id: '0',
+    name: 'Zero a Herói',
+    description: 'O primeiro passo para se tornar um herói da calistenia! Perfeito para quem está começando do absoluto zero. Foco total na forma correta, movimentos básicos e construção de base sólida. Bora começar essa jornada! 🚀',
+    duration: '4 semanas',
+    weeks: [
+      {
+        weekNumber: 1,
+        workouts: [
+          {
+            day: 'Segunda-feira',
+            exercises: [
+              { name: 'Flexão com Joelho no Chão', sets: 2, reps: '5-8', rest: '90s' },
+              { name: 'Agachamento Livre', sets: 2, reps: '8-10', rest: '90s' },
+              { name: 'Prancha', sets: 2, reps: '15-20s', rest: '60s' },
+              { name: 'Superman', sets: 2, reps: '8-10', rest: '60s' }
+            ]
+          },
+          {
+            day: 'Quarta-feira',
+            exercises: [
+              { name: 'Remada Invertida', sets: 2, reps: '5-8', rest: '2min' },
+              { name: 'Afundo', sets: 2, reps: '6-8 cada', rest: '90s' },
+              { name: 'Prancha', sets: 2, reps: '15-20s', rest: '60s' },
+              { name: 'Hollow Body Hold', sets: 2, reps: '10-15s', rest: '60s' }
+            ]
+          },
+          {
+            day: 'Sexta-feira',
+            exercises: [
+              { name: 'Flexão com Joelho no Chão', sets: 2, reps: '5-8', rest: '90s' },
+              { name: 'Agachamento Livre', sets: 2, reps: '8-10', rest: '90s' },
+              { name: 'Superman', sets: 2, reps: '8-10', rest: '60s' },
+              { name: 'Elevação de Panturrilha em Pé', sets: 2, reps: '10-12', rest: '60s' }
+            ]
+          }
+        ]
+      },
+      {
+        weekNumber: 2,
+        workouts: [
+          {
+            day: 'Segunda-feira',
+            exercises: [
+              { name: 'Flexão com Joelho no Chão', sets: 2, reps: '8-10', rest: '90s' },
+              { name: 'Agachamento Livre', sets: 2, reps: '10-12', rest: '90s' },
+              { name: 'Prancha', sets: 2, reps: '20-25s', rest: '60s' },
+              { name: 'Superman', sets: 2, reps: '10-12', rest: '60s' }
+            ]
+          },
+          {
+            day: 'Quarta-feira',
+            exercises: [
+              { name: 'Remada Invertida', sets: 2, reps: '6-10', rest: '2min' },
+              { name: 'Afundo', sets: 2, reps: '8-10 cada', rest: '90s' },
+              { name: 'Prancha', sets: 2, reps: '20-25s', rest: '60s' },
+              { name: 'Hollow Body Hold', sets: 2, reps: '15-20s', rest: '60s' }
+            ]
+          },
+          {
+            day: 'Sexta-feira',
+            exercises: [
+              { name: 'Flexão com Joelho no Chão', sets: 3, reps: '6-8', rest: '90s' },
+              { name: 'Agachamento Livre', sets: 3, reps: '10-12', rest: '90s' },
+              { name: 'Superman', sets: 2, reps: '10-12', rest: '60s' },
+              { name: 'Elevação de Panturrilha em Pé', sets: 2, reps: '12-15', rest: '60s' }
+            ]
+          }
+        ]
+      },
+      {
+        weekNumber: 3,
+        workouts: [
+          {
+            day: 'Segunda-feira',
+            exercises: [
+              { name: 'Flexões de Braço', sets: 2, reps: '3-5', rest: '2min' },
+              { name: 'Agachamento Livre', sets: 3, reps: '12-15', rest: '90s' },
+              { name: 'Prancha', sets: 2, reps: '25-30s', rest: '60s' },
+              { name: 'Superman', sets: 3, reps: '10-12', rest: '60s' }
+            ]
+          },
+          {
+            day: 'Quarta-feira',
+            exercises: [
+              { name: 'Remada Invertida', sets: 3, reps: '8-10', rest: '2min' },
+              { name: 'Afundo', sets: 3, reps: '8-10 cada', rest: '90s' },
+              { name: 'Prancha', sets: 3, reps: '25-30s', rest: '60s' },
+              { name: 'Hollow Body Hold', sets: 2, reps: '20-25s', rest: '60s' }
+            ]
+          },
+          {
+            day: 'Sexta-feira',
+            exercises: [
+              { name: 'Flexões de Braço', sets: 2, reps: '4-6', rest: '2min' },
+              { name: 'Agachamento Livre', sets: 3, reps: '12-15', rest: '90s' },
+              { name: 'Superman', sets: 3, reps: '12-15', rest: '60s' },
+              { name: 'Elevação de Panturrilha em Pé', sets: 3, reps: '15-18', rest: '60s' }
+            ]
+          }
+        ]
+      },
+      {
+        weekNumber: 4,
+        workouts: [
+          {
+            day: 'Segunda-feira',
+            exercises: [
+              { name: 'Flexões de Braço', sets: 3, reps: '5-8', rest: '90s' },
+              { name: 'Agachamento Livre', sets: 3, reps: '15-18', rest: '90s' },
+              { name: 'Prancha', sets: 3, reps: '30-40s', rest: '60s' },
+              { name: 'Superman', sets: 3, reps: '12-15', rest: '60s' }
+            ]
+          },
+          {
+            day: 'Quarta-feira',
+            exercises: [
+              { name: 'Remada Invertida', sets: 3, reps: '10-12', rest: '2min' },
+              { name: 'Afundo', sets: 3, reps: '10-12 cada', rest: '90s' },
+              { name: 'Prancha', sets: 3, reps: '30-40s', rest: '60s' },
+              { name: 'Hollow Body Hold', sets: 3, reps: '25-30s', rest: '60s' }
+            ]
+          },
+          {
+            day: 'Sexta-feira',
+            exercises: [
+              { name: 'Flexões de Braço', sets: 3, reps: '6-10', rest: '90s' },
+              { name: 'Agachamento Livre', sets: 3, reps: '15-20', rest: '90s' },
+              { name: 'Superman', sets: 3, reps: '15-18', rest: '60s' },
+              { name: 'Elevação de Panturrilha em Pé', sets: 3, reps: '18-20', rest: '60s' }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
     id: '1',
     name: 'CaliForce Iniciante',
     description: 'Ciclo de 4 semanas para iniciantes na calistenia. Foque na técnica e construa sua base sólida.',

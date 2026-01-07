@@ -35,12 +35,26 @@ export const authOptions = {
                     throw new Error("Credenciais inválidas")
                 }
 
+                // Check if user is the creator and grant permanent premium access
+                const isCreator = user.email === 'difoggijuniormarcelo@gmail.com';
+
+                // If creator and not already premium, update database
+                if (isCreator && !user.isPremium) {
+                    await prisma.user.update({
+                        where: { id: user.id },
+                        data: {
+                            isPremium: true,
+                            premiumPlan: 'lifetime'
+                        }
+                    });
+                }
+
                 return {
                     id: user.id,
                     email: user.email,
                     name: user.name,
-                    isPremium: user.isPremium,
-                    premiumPlan: user.premiumPlan
+                    isPremium: isCreator ? true : user.isPremium,
+                    premiumPlan: isCreator ? 'lifetime' : user.premiumPlan
                 }
             }
         })
